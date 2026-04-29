@@ -14,8 +14,10 @@ export async function GET() {
         userId: string;
     };
 
+    const uId = Number(decoded.userId);
+
     const user = await prisma.user.findUnique({
-        where: { id: decoded.userId },
+        where: { id: uId },
     });
 
     return Response.json({ user });
