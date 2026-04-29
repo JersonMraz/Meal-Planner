@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Favorite {
+  id      Int  @id @default(autoincrement())
+  user_id Int
+  meal_id Int
+  Meal    Meal @relation(fields: [meal_id], references: [id])
+  User    User @relation(fields: [user_id], references: [id])
+}
+
+model Ingredients {
+  id      Int    @id @default(autoincrement())
+  meal_id Int
+  name    String
+  Meal    Meal   @relation(fields: [meal_id], references: [id])
+}
+
+model Instructions {
+  id          Int    @id @default(autoincrement())
+  meal_id     Int
+  step_number Int
+  description String
+  Meal        Meal   @relation(fields: [meal_id], references: [id])
+}
+
+model Meal {
+  id           Int            @id @default(autoincrement())
+  name         String
+  category     String
+  cuisine      String
+  diet_type    String
+  prep_time    Int
+  cook_time    Int
+  Favorite     Favorite[]
+  Ingredients  Ingredients[]
+  Instructions Instructions[]
+  Meal_Tags    Meal_Tags[]
+  Nutrition    Nutrition[]
+}
+
+model Meal_Tags {
+  meal_id Int
+  tag_id  Int
+  Meal    Meal @relation(fields: [meal_id], references: [id])
+  Tags    Tags @relation(fields: [tag_id], references: [id])
+
+  @@id([meal_id, tag_id])
+}
+
+model Nutrition {
+  id       Int  @id @default(autoincrement())
+  meal_id  Int
+  calories Int
+  protein  Int
+  carbs    Int
+  fat      Int
+  Meal     Meal @relation(fields: [meal_id], references: [id])
+}
+
+model Tags {
+  id        Int         @id @default(autoincrement())
+  name      String      @unique
+  Meal_Tags Meal_Tags[]
+}
+
+model User {
+  id        Int        @id @default(autoincrement())
+  firstname String
+  lastname  String
+  email     String     @unique
+  password  String
+  role      String     @default("USER")
+  createdAt DateTime   @default(now())
+  Favorite  Favorite[]
+}

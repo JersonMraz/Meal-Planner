@@ -1,0 +1,2087 @@
+[
+  {
+    "id": 1,
+    "name": "Chicken Adobo",
+    "category": "Dinner",
+    "image_url": "https://res.cloudinary.com/dxg6btvao/image/upload/v1777274326/meal-planner/n6ahphcnqrvtew18zeto.jpg",
+    "ingredients": [
+      "chicken",
+      "soy sauce",
+      "vinegar",
+      "garlic",
+      "bay leaves",
+      "peppercorn"
+    ],
+    "diet_type": "high-protein",
+    "prep_time": 15,
+    "cook_time": 40,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 305,
+      "protein": 11,
+      "carbs": 21,
+      "fat": 11
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Pork Sinigang",
+    "category": "Lunch",
+    "image_url": "https://res.cloudinary.com/dxg6btvao/image/upload/v1777274403/meal-planner/qowrod9ezm4bu1w4bnla.jpg",
+    "ingredients": [
+      "pork",
+      "tamarind",
+      "radish",
+      "kang kong",
+      "tomato",
+      "onion"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 20,
+    "cook_time": 60,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 310,
+      "protein": 12,
+      "carbs": 22,
+      "fat": 12
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "soup",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Tinolang Manok",
+    "category": "Dinner",
+    "image_url": "https://res.cloudinary.com/dxg6btvao/image/upload/v1777274414/meal-planner/sonov5zzb3rw3k8o6cwq.jpg",
+    "ingredients": [
+      "chicken",
+      "ginger",
+      "green papaya",
+      "malunggay"
+    ],
+    "diet_type": "low-fat",
+    "prep_time": 15,
+    "cook_time": 35,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 315,
+      "protein": 13,
+      "carbs": 23,
+      "fat": 13
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "soup",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Kare-Kare",
+    "category": "Dinner",
+    "image_url": "https://res.cloudinary.com/dxg6btvao/image/upload/v1777274429/meal-planner/i1t5jbgmhlcnuduvqwej.jpg",
+    "ingredients": [
+      "oxtail",
+      "peanut sauce",
+      "eggplant",
+      "banana heart",
+      "string beans"
+    ],
+    "diet_type": "high-fat",
+    "prep_time": 25,
+    "cook_time": 120,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 320,
+      "protein": 14,
+      "carbs": 24,
+      "fat": 14
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Tapsilog",
+    "category": "Breakfast",
+    "image_url": "https://res.cloudinary.com/dxg6btvao/image/upload/v1777274441/meal-planner/iwuzgwml744byh3msp3v.jpg",
+    "ingredients": [
+      "beef tapa",
+      "garlic rice",
+      "egg"
+    ],
+    "diet_type": "high-protein",
+    "prep_time": 10,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 325,
+      "protein": 15,
+      "carbs": 25,
+      "fat": 15
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "quick",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Pancit Canton",
+    "category": "Lunch",
+    "image_url": "https://res.cloudinary.com/dxg6btvao/image/upload/v1777274456/meal-planner/w1t9wvxiteclitwxhc0d.jpg",
+    "ingredients": [
+      "noodles",
+      "chicken",
+      "vegetables",
+      "soy sauce"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 15,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 330,
+      "protein": 16,
+      "carbs": 26,
+      "fat": 16
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Lumpiang Shanghai",
+    "category": "Snack",
+    "image_url": "https://res.cloudinary.com/dxg6btvao/image/upload/v1777274471/meal-planner/etxo71huokh4fj4gnksq.jpg",
+    "ingredients": [
+      "ground pork",
+      "wrapper",
+      "carrots",
+      "onion"
+    ],
+    "diet_type": "high-fat",
+    "prep_time": 25,
+    "cook_time": 15,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 335,
+      "protein": 17,
+      "carbs": 27,
+      "fat": 17
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "light",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Bicol Express",
+    "category": "Dinner",
+    "image_url": "https://res.cloudinary.com/dxg6btvao/image/upload/v1777274482/meal-planner/kfgiiaqffeybcbdurpkr.jpg",
+    "ingredients": [
+      "pork",
+      "coconut milk",
+      "chili",
+      "shrimp paste"
+    ],
+    "diet_type": "high-fat",
+    "prep_time": 15,
+    "cook_time": 40,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 340,
+      "protein": 18,
+      "carbs": 28,
+      "fat": 18
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Bangus Sisig",
+    "category": "Dinner",
+    "image_url": "https://res.cloudinary.com/dxg6btvao/image/upload/v1777274496/meal-planner/etmdpdloqkacvaei68gf.jpg",
+    "ingredients": [
+      "milkfish",
+      "onion",
+      "chili",
+      "calamansi"
+    ],
+    "diet_type": "high-protein",
+    "prep_time": 20,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 345,
+      "protein": 19,
+      "carbs": 29,
+      "fat": 19
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Laing",
+    "category": "Dinner",
+    "image_url": "https://res.cloudinary.com/dxg6btvao/image/upload/v1777274506/meal-planner/vkkguxo26nzra8lnolnf.jpg",
+    "ingredients": [
+      "taro leaves",
+      "coconut milk",
+      "chili"
+    ],
+    "diet_type": "vegan",
+    "prep_time": 15,
+    "cook_time": 40,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 350,
+      "protein": 20,
+      "carbs": 30,
+      "fat": 20
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Fried Chicken",
+    "category": "Dinner",
+    "ingredients": [
+      "chicken",
+      "flour",
+      "oil"
+    ],
+    "diet_type": "high-fat",
+    "prep_time": 10,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 355,
+      "protein": 21,
+      "carbs": 31,
+      "fat": 21
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "fried",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Spaghetti Filipino Style",
+    "category": "Lunch",
+    "ingredients": [
+      "pasta",
+      "sweet sauce",
+      "hotdog",
+      "ground meat"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 15,
+    "cook_time": 25,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 360,
+      "protein": 22,
+      "carbs": 32,
+      "fat": 22
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Grilled Liempo",
+    "category": "Dinner",
+    "ingredients": [
+      "pork belly",
+      "soy sauce",
+      "garlic"
+    ],
+    "diet_type": "high-fat",
+    "prep_time": 15,
+    "cook_time": 25,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 365,
+      "protein": 23,
+      "carbs": 33,
+      "fat": 23
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "grilled",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Chicken Curry",
+    "category": "Dinner",
+    "ingredients": [
+      "chicken",
+      "curry powder",
+      "potato",
+      "carrots"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 15,
+    "cook_time": 35,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 370,
+      "protein": 24,
+      "carbs": 34,
+      "fat": 24
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Beef Caldereta",
+    "category": "Dinner",
+    "ingredients": [
+      "beef",
+      "tomato sauce",
+      "potato",
+      "liver spread"
+    ],
+    "diet_type": "high-protein",
+    "prep_time": 20,
+    "cook_time": 90,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 375,
+      "protein": 25,
+      "carbs": 35,
+      "fat": 25
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Omelette",
+    "category": "Breakfast",
+    "ingredients": [
+      "eggs",
+      "onion",
+      "tomato"
+    ],
+    "diet_type": "low-carb",
+    "prep_time": 5,
+    "cook_time": 10,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 380,
+      "protein": 26,
+      "carbs": 36,
+      "fat": 26
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "quick",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Garlic Butter Shrimp",
+    "category": "Dinner",
+    "ingredients": [
+      "shrimp",
+      "garlic",
+      "butter"
+    ],
+    "diet_type": "low-carb",
+    "prep_time": 10,
+    "cook_time": 10,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 385,
+      "protein": 27,
+      "carbs": 37,
+      "fat": 27
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Vegetable Stir Fry",
+    "category": "Lunch",
+    "ingredients": [
+      "mixed vegetables",
+      "soy sauce",
+      "garlic"
+    ],
+    "diet_type": "vegan",
+    "prep_time": 10,
+    "cook_time": 10,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 390,
+      "protein": 28,
+      "carbs": 38,
+      "fat": 28
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Burger",
+    "category": "Lunch",
+    "ingredients": [
+      "bun",
+      "beef patty",
+      "lettuce"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 10,
+    "cook_time": 15,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 395,
+      "protein": 29,
+      "carbs": 39,
+      "fat": 29
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Chicken Inasal",
+    "category": "Dinner",
+    "ingredients": [
+      "chicken",
+      "annatto",
+      "vinegar",
+      "garlic"
+    ],
+    "diet_type": "high-protein",
+    "prep_time": 20,
+    "cook_time": 30,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein": 10,
+      "carbs": 40,
+      "fat": 30
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Beef Tapa",
+    "category": "Breakfast",
+    "ingredients": [
+      "beef",
+      "soy sauce",
+      "garlic"
+    ],
+    "diet_type": "high-protein",
+    "prep_time": 15,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 405,
+      "protein": 11,
+      "carbs": 41,
+      "fat": 31
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "quick",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Longsilog",
+    "category": "Breakfast",
+    "ingredients": [
+      "longganisa",
+      "rice",
+      "egg"
+    ],
+    "diet_type": "high-fat",
+    "prep_time": 10,
+    "cook_time": 15,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 410,
+      "protein": 12,
+      "carbs": 42,
+      "fat": 32
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "quick",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Tosilog",
+    "category": "Breakfast",
+    "ingredients": [
+      "tocino",
+      "rice",
+      "egg"
+    ],
+    "diet_type": "high-fat",
+    "prep_time": 10,
+    "cook_time": 15,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 415,
+      "protein": 13,
+      "carbs": 43,
+      "fat": 33
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "quick",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Pinakbet",
+    "category": "Lunch",
+    "ingredients": [
+      "vegetables",
+      "shrimp paste"
+    ],
+    "diet_type": "vegan",
+    "prep_time": 15,
+    "cook_time": 30,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 420,
+      "protein": 14,
+      "carbs": 44,
+      "fat": 34
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Dinuguan",
+    "category": "Dinner",
+    "ingredients": [
+      "pork",
+      "pork blood",
+      "vinegar"
+    ],
+    "diet_type": "high-protein",
+    "prep_time": 20,
+    "cook_time": 50,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 425,
+      "protein": 15,
+      "carbs": 45,
+      "fat": 10
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Arroz Caldo",
+    "category": "Breakfast",
+    "ingredients": [
+      "rice",
+      "chicken",
+      "ginger"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 15,
+    "cook_time": 40,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 430,
+      "protein": 16,
+      "carbs": 46,
+      "fat": 11
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "quick",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Champorado",
+    "category": "Breakfast",
+    "ingredients": [
+      "rice",
+      "cocoa"
+    ],
+    "diet_type": "vegetarian",
+    "prep_time": 10,
+    "cook_time": 30,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 435,
+      "protein": 17,
+      "carbs": 47,
+      "fat": 12
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "quick",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Puto",
+    "category": "Snack",
+    "ingredients": [
+      "rice flour",
+      "sugar"
+    ],
+    "diet_type": "vegetarian",
+    "prep_time": 10,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 440,
+      "protein": 18,
+      "carbs": 48,
+      "fat": 13
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "light",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Bibingka",
+    "category": "Snack",
+    "ingredients": [
+      "rice flour",
+      "coconut milk"
+    ],
+    "diet_type": "vegetarian",
+    "prep_time": 15,
+    "cook_time": 25,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 445,
+      "protein": 19,
+      "carbs": 49,
+      "fat": 14
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "light",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Lechon Kawali",
+    "category": "Dinner",
+    "ingredients": [
+      "pork belly",
+      "oil"
+    ],
+    "diet_type": "high-fat",
+    "prep_time": 20,
+    "cook_time": 60,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 450,
+      "protein": 20,
+      "carbs": 20,
+      "fat": 15
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Sisig",
+    "category": "Dinner",
+    "ingredients": [
+      "pork",
+      "onion",
+      "chili"
+    ],
+    "diet_type": "high-fat",
+    "prep_time": 20,
+    "cook_time": 25,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 455,
+      "protein": 21,
+      "carbs": 21,
+      "fat": 16
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Halo-Halo",
+    "category": "Dessert",
+    "ingredients": [
+      "ice",
+      "milk",
+      "sweet beans"
+    ],
+    "diet_type": "vegetarian",
+    "prep_time": 15,
+    "cook_time": 5,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 460,
+      "protein": 22,
+      "carbs": 22,
+      "fat": 17
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Fruit Salad",
+    "category": "Dessert",
+    "ingredients": [
+      "fruits",
+      "cream"
+    ],
+    "diet_type": "vegetarian",
+    "prep_time": 10,
+    "cook_time": 10,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 465,
+      "protein": 23,
+      "carbs": 23,
+      "fat": 18
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Grilled Fish",
+    "category": "Dinner",
+    "ingredients": [
+      "fish",
+      "salt"
+    ],
+    "diet_type": "low-fat",
+    "prep_time": 10,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 470,
+      "protein": 24,
+      "carbs": 24,
+      "fat": 19
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "grilled",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Chicken BBQ",
+    "category": "Dinner",
+    "ingredients": [
+      "chicken",
+      "banana ketchup"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 20,
+    "cook_time": 30,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 475,
+      "protein": 25,
+      "carbs": 25,
+      "fat": 20
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "grilled",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Pancit Bihon",
+    "category": "Lunch",
+    "ingredients": [
+      "rice noodles",
+      "vegetables"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 15,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 480,
+      "protein": 26,
+      "carbs": 26,
+      "fat": 21
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Sotanghon Soup",
+    "category": "Dinner",
+    "ingredients": [
+      "glass noodles",
+      "chicken"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 15,
+    "cook_time": 25,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 485,
+      "protein": 27,
+      "carbs": 27,
+      "fat": 22
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "soup",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Monggo Guisado",
+    "category": "Lunch",
+    "ingredients": [
+      "mung beans",
+      "pork"
+    ],
+    "diet_type": "high-protein",
+    "prep_time": 15,
+    "cook_time": 40,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 490,
+      "protein": 28,
+      "carbs": 28,
+      "fat": 23
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Ginataang Gulay",
+    "category": "Lunch",
+    "ingredients": [
+      "vegetables",
+      "coconut milk"
+    ],
+    "diet_type": "vegan",
+    "prep_time": 15,
+    "cook_time": 30,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 495,
+      "protein": 29,
+      "carbs": 29,
+      "fat": 24
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Beef Steak (Bistek)",
+    "category": "Dinner",
+    "ingredients": [
+      "beef",
+      "soy sauce",
+      "onion"
+    ],
+    "diet_type": "high-protein",
+    "prep_time": 15,
+    "cook_time": 30,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 500,
+      "protein": 10,
+      "carbs": 30,
+      "fat": 25
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Chicken Afritada",
+    "category": "Dinner",
+    "ingredients": [
+      "chicken",
+      "tomato sauce",
+      "potato"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 15,
+    "cook_time": 40,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 505,
+      "protein": 11,
+      "carbs": 31,
+      "fat": 26
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Menudo",
+    "category": "Lunch",
+    "ingredients": [
+      "pork",
+      "tomato sauce",
+      "vegetables"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 20,
+    "cook_time": 50,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 510,
+      "protein": 12,
+      "carbs": 32,
+      "fat": 27
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Hotdog Sandwich",
+    "category": "Snack",
+    "ingredients": [
+      "hotdog",
+      "bread"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 5,
+    "cook_time": 10,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 515,
+      "protein": 13,
+      "carbs": 33,
+      "fat": 28
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "light",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Fried Rice",
+    "category": "Breakfast",
+    "ingredients": [
+      "rice",
+      "garlic"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 5,
+    "cook_time": 10,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 520,
+      "protein": 14,
+      "carbs": 34,
+      "fat": 29
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "quick",
+      "fried",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Scrambled Eggs",
+    "category": "Breakfast",
+    "ingredients": [
+      "eggs",
+      "butter"
+    ],
+    "diet_type": "low-carb",
+    "prep_time": 5,
+    "cook_time": 5,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to traditional method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 525,
+      "protein": 15,
+      "carbs": 35,
+      "fat": 30
+    },
+    "cuisine": "Filipino",
+    "tags": [
+      "quick",
+      "with-rice"
+    ]
+  },
+  {
+    "id": 46,
+    "name": "Chicken Sopas",
+    "category": "Dinner",
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ],
+    "ingredients": [
+      "chicken",
+      "macaroni",
+      "milk"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 15,
+    "cook_time": 30,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 484,
+      "protein": 16,
+      "carbs": 36,
+      "fat": 31
+    }
+  },
+  {
+    "id": 47,
+    "name": "Paksiw na Isda",
+    "category": "Lunch",
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ],
+    "ingredients": [
+      "fish",
+      "vinegar",
+      "garlic"
+    ],
+    "diet_type": "low-fat",
+    "prep_time": 10,
+    "cook_time": 25,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 488,
+      "protein": 17,
+      "carbs": 37,
+      "fat": 32
+    }
+  },
+  {
+    "id": 48,
+    "name": "Ginisang Ampalaya",
+    "category": "Lunch",
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ],
+    "ingredients": [
+      "bitter melon",
+      "egg"
+    ],
+    "diet_type": "low-carb",
+    "prep_time": 10,
+    "cook_time": 15,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 492,
+      "protein": 18,
+      "carbs": 38,
+      "fat": 33
+    }
+  },
+  {
+    "id": 49,
+    "name": "Adobong Pusit",
+    "category": "Dinner",
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ],
+    "ingredients": [
+      "squid",
+      "soy sauce",
+      "vinegar"
+    ],
+    "diet_type": "high-protein",
+    "prep_time": 15,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 496,
+      "protein": 19,
+      "carbs": 39,
+      "fat": 34
+    }
+  },
+  {
+    "id": 50,
+    "name": "Tokwa't Baboy",
+    "category": "Snack",
+    "cuisine": "Filipino",
+    "tags": [
+      "light",
+      "with-rice"
+    ],
+    "ingredients": [
+      "tofu",
+      "pork"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 15,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 500,
+      "protein": 20,
+      "carbs": 40,
+      "fat": 10
+    }
+  },
+  {
+    "id": 51,
+    "name": "Ginataang Manok",
+    "category": "Dinner",
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ],
+    "ingredients": [
+      "chicken",
+      "coconut milk"
+    ],
+    "diet_type": "high-fat",
+    "prep_time": 15,
+    "cook_time": 35,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 504,
+      "protein": 21,
+      "carbs": 41,
+      "fat": 11
+    }
+  },
+  {
+    "id": 52,
+    "name": "Pork BBQ",
+    "category": "Dinner",
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "grilled",
+      "with-rice"
+    ],
+    "ingredients": [
+      "pork",
+      "bbq sauce"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 20,
+    "cook_time": 30,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 508,
+      "protein": 22,
+      "carbs": 42,
+      "fat": 12
+    }
+  },
+  {
+    "id": 53,
+    "name": "Chicken Nuggets",
+    "category": "Snack",
+    "cuisine": "Filipino",
+    "tags": [
+      "light",
+      "with-rice"
+    ],
+    "ingredients": [
+      "chicken",
+      "breadcrumbs"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 10,
+    "cook_time": 15,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 512,
+      "protein": 23,
+      "carbs": 43,
+      "fat": 13
+    }
+  },
+  {
+    "id": 54,
+    "name": "Fried Tilapia",
+    "category": "Dinner",
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "fried",
+      "with-rice"
+    ],
+    "ingredients": [
+      "fish",
+      "oil"
+    ],
+    "diet_type": "high-fat",
+    "prep_time": 10,
+    "cook_time": 15,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 516,
+      "protein": 24,
+      "carbs": 44,
+      "fat": 14
+    }
+  },
+  {
+    "id": 55,
+    "name": "Egg Sandwich",
+    "category": "Breakfast",
+    "cuisine": "Filipino",
+    "tags": [
+      "quick",
+      "with-rice"
+    ],
+    "ingredients": [
+      "egg",
+      "bread"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 5,
+    "cook_time": 10,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 520,
+      "protein": 25,
+      "carbs": 45,
+      "fat": 15
+    }
+  },
+  {
+    "id": 56,
+    "name": "Ham Sandwich",
+    "category": "Breakfast",
+    "cuisine": "Filipino",
+    "tags": [
+      "quick",
+      "with-rice"
+    ],
+    "ingredients": [
+      "ham",
+      "bread"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 5,
+    "cook_time": 10,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 524,
+      "protein": 26,
+      "carbs": 46,
+      "fat": 16
+    }
+  },
+  {
+    "id": 57,
+    "name": "Clubhouse Sandwich",
+    "category": "Lunch",
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ],
+    "ingredients": [
+      "bread",
+      "chicken",
+      "lettuce"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 10,
+    "cook_time": 15,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 528,
+      "protein": 27,
+      "carbs": 47,
+      "fat": 17
+    }
+  },
+  {
+    "id": 58,
+    "name": "Carbonara",
+    "category": "Lunch",
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ],
+    "ingredients": [
+      "pasta",
+      "cream",
+      "bacon"
+    ],
+    "diet_type": "high-fat",
+    "prep_time": 15,
+    "cook_time": 25,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 532,
+      "protein": 28,
+      "carbs": 48,
+      "fat": 18
+    }
+  },
+  {
+    "id": 59,
+    "name": "Mac and Cheese",
+    "category": "Lunch",
+    "cuisine": "Filipino",
+    "tags": [
+      "with-rice"
+    ],
+    "ingredients": [
+      "pasta",
+      "cheese"
+    ],
+    "diet_type": "vegetarian",
+    "prep_time": 10,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 536,
+      "protein": 29,
+      "carbs": 49,
+      "fat": 19
+    }
+  },
+  {
+    "id": 60,
+    "name": "Chicken Teriyaki",
+    "category": "Dinner",
+    "cuisine": "Filipino",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ],
+    "ingredients": [
+      "chicken",
+      "teriyaki sauce"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 15,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 540,
+      "protein": 10,
+      "carbs": 20,
+      "fat": 20
+    }
+  },
+  {
+    "id": 61,
+    "name": "Beef Broccoli",
+    "category": "Dinner",
+    "cuisine": "International",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ],
+    "ingredients": [
+      "beef",
+      "broccoli"
+    ],
+    "diet_type": "low-carb",
+    "prep_time": 15,
+    "cook_time": 20,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 544,
+      "protein": 11,
+      "carbs": 21,
+      "fat": 21
+    }
+  },
+  {
+    "id": 62,
+    "name": "Fried Dumplings",
+    "category": "Snack",
+    "cuisine": "International",
+    "tags": [
+      "light",
+      "fried",
+      "with-rice"
+    ],
+    "ingredients": [
+      "dumplings"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 10,
+    "cook_time": 15,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 548,
+      "protein": 12,
+      "carbs": 22,
+      "fat": 22
+    }
+  },
+  {
+    "id": 63,
+    "name": "Sushi Rolls",
+    "category": "Lunch",
+    "cuisine": "International",
+    "tags": [
+      "with-rice"
+    ],
+    "ingredients": [
+      "rice",
+      "fish"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 20,
+    "cook_time": 30,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 552,
+      "protein": 13,
+      "carbs": 23,
+      "fat": 23
+    }
+  },
+  {
+    "id": 64,
+    "name": "Ramen",
+    "category": "Dinner",
+    "cuisine": "International",
+    "tags": [
+      "ulam",
+      "with-rice"
+    ],
+    "ingredients": [
+      "noodles",
+      "broth"
+    ],
+    "diet_type": "balanced",
+    "prep_time": 20,
+    "cook_time": 30,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 556,
+      "protein": 14,
+      "carbs": 24,
+      "fat": 24
+    }
+  },
+  {
+    "id": 65,
+    "name": "Caesar Salad",
+    "category": "Lunch",
+    "cuisine": "International",
+    "tags": [
+      "with-rice"
+    ],
+    "ingredients": [
+      "lettuce",
+      "chicken"
+    ],
+    "diet_type": "low-carb",
+    "prep_time": 10,
+    "cook_time": 10,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 560,
+      "protein": 15,
+      "carbs": 25,
+      "fat": 25
+    }
+  },
+  {
+    "id": 66,
+    "name": "Greek Salad",
+    "category": "Lunch",
+    "cuisine": "International",
+    "tags": [
+      "with-rice"
+    ],
+    "ingredients": [
+      "vegetables",
+      "cheese"
+    ],
+    "diet_type": "vegetarian",
+    "prep_time": 10,
+    "cook_time": 10,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 564,
+      "protein": 16,
+      "carbs": 26,
+      "fat": 26
+    }
+  },
+  {
+    "id": 67,
+    "name": "Grilled Cheese",
+    "category": "Snack",
+    "cuisine": "International",
+    "tags": [
+      "light",
+      "grilled",
+      "with-rice"
+    ],
+    "ingredients": [
+      "bread",
+      "cheese"
+    ],
+    "diet_type": "vegetarian",
+    "prep_time": 5,
+    "cook_time": 10,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 568,
+      "protein": 17,
+      "carbs": 27,
+      "fat": 27
+    }
+  },
+  {
+    "id": 68,
+    "name": "Pancakes",
+    "category": "Breakfast",
+    "cuisine": "International",
+    "tags": [
+      "quick",
+      "with-rice"
+    ],
+    "ingredients": [
+      "flour",
+      "egg",
+      "milk"
+    ],
+    "diet_type": "vegetarian",
+    "prep_time": 10,
+    "cook_time": 15,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 572,
+      "protein": 18,
+      "carbs": 28,
+      "fat": 28
+    }
+  },
+  {
+    "id": 69,
+    "name": "Waffles",
+    "category": "Breakfast",
+    "cuisine": "International",
+    "tags": [
+      "quick",
+      "with-rice"
+    ],
+    "ingredients": [
+      "flour",
+      "egg"
+    ],
+    "diet_type": "vegetarian",
+    "prep_time": 10,
+    "cook_time": 15,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 576,
+      "protein": 19,
+      "carbs": 29,
+      "fat": 29
+    }
+  },
+  {
+    "id": 70,
+    "name": "French Toast",
+    "category": "Breakfast",
+    "cuisine": "International",
+    "tags": [
+      "quick",
+      "with-rice"
+    ],
+    "ingredients": [
+      "bread",
+      "egg",
+      "milk"
+    ],
+    "diet_type": "vegetarian",
+    "prep_time": 10,
+    "cook_time": 10,
+    "instructions": [
+      "Prepare all ingredients.",
+      "Cook according to method.",
+      "Adjust seasoning.",
+      "Serve and enjoy."
+    ],
+    "nutrition": {
+      "calories": 580,
+      "protein": 20,
+      "carbs": 30,
+      "fat": 30
+    }
+  }
+]
