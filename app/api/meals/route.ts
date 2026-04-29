@@ -30,8 +30,8 @@ export async function GET(req: Request) {
             })
         ]);
 
-        const diets = uniqueDiets.map(d => d.diet_type);
-        const cuisines = uniqueCuisines.map(c => c.cuisine);
+        const diets = uniqueDiets.map((d: any) => d.diet_type);
+        const cuisines = uniqueCuisines.map((c: any) => c.cuisine);
 
         return Response.json({
             success: true,
