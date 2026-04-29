@@ -24,7 +24,7 @@ export async function GET(req: Request) {
         });
 
         // Sort: prioritize meals where the name matches the query
-        const sortedMeals = meals.sort((a, b) => {
+        const sortedMeals = meals.sort((a: any, b: any) => {
             const queryLower = query.toLowerCase();
             const aNameLower = a.name.toLowerCase();
             const bNameLower = b.name.toLowerCase();
@@ -42,7 +42,7 @@ export async function GET(req: Request) {
             // 2. Prioritize meals that CONTAIN the query
             if (aContains && !bContains) return -1;
             if (!aContains && bContains) return 1;
-            
+
             // 3. Fallback: alphabetical
             return a.name.localeCompare(b.name);
         });
