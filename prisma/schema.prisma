@@ -43,6 +43,7 @@ model Meal {
   Instructions Instructions[]
   Meal_Tags    Meal_Tags[]
   Nutrition    Nutrition?
+  MealPlan     MealPlan[]
 }
 
 model Meal_Tags {
@@ -78,5 +79,29 @@ model User {
   password  String
   role      String     @default("USER")
   createdAt DateTime   @default(now())
-  Favorite  Favorite[]
+  Favorite    Favorite[]
+  MealPlan    MealPlan[]
+  GroceryItem GroceryItem[]
+}
+
+model MealPlan {
+  id        Int    @id @default(autoincrement())
+  user_id   Int
+  date      String
+  meal_type String
+  meal_id   Int
+  Meal      Meal   @relation(fields: [meal_id], references: [id])
+  User      User   @relation(fields: [user_id], references: [id])
+
+  @@unique([user_id, date, meal_type])
+}
+
+model GroceryItem {
+  id           Int      @id @default(autoincrement())
+  user_id      Int
+  category     String
+  name         String
+  checked      Boolean  @default(false)
+  meal_plan_id Int?
+  User         User     @relation(fields: [user_id], references: [id])
 }

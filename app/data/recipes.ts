@@ -1,15 +1,14 @@
-import { StaticImageData } from "next/image";
-import recipe1 from "../../public/assets/recipe-1.jpg";
-import recipe2 from "../../public/assets/recipe-2.jpg";
-import recipe3 from "../../public/assets/recipe-3.jpg";
-import recipe4 from "../../public/assets/recipe-4.jpg";
-import recipe5 from "../../public/assets/recipe-5.jpg";
-import recipe6 from "../../public/assets/recipe-6.jpg";
+import recipe1 from "@/app/assets/recipe-1.jpg";
+import recipe2 from "@/app/assets/recipe-2.jpg";
+import recipe3 from "@/app/assets/recipe-3.jpg";
+import recipe4 from "@/app/assets/recipe-4.jpg";
+import recipe5 from "@/app/assets/recipe-5.jpg";
+import recipe6 from "@/app/assets/recipe-6.jpg";
 
 export interface Recipe {
     id: string;
     title: string;
-    image: StaticImageData;
+    image: string;
     calories: number;
     prepTime: number;
     cuisine: string;
