@@ -8,7 +8,7 @@ import recipe6 from "@/app/assets/recipe-6.jpg";
 export interface Recipe {
     id: string;
     title: string;
-    image: string;
+    image: any;
     calories: number;
     prepTime: number;
     cuisine: string;

@@ -1,9 +1,9 @@
 "use client";
 
 import { BookOpen, CalendarCheck, TrendingUp, Utensils } from "lucide-react";
-import { RecipeCard } from "../../components/RecipeCard";
-import { recipes, mealPlan } from "../../data/recipes";
-import heroImg from "@/public/assets/hero-recipe.jpg";
+import { RecipeCard } from "@/app/components/RecipeCard";
+import { recipes, mealPlan } from "@/app/data/recipes";
+import heroImg from "@/app/assets/hero-recipe.jpg";
 // import { div } from "framer-motion/client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
