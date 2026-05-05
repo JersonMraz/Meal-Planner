@@ -22,6 +22,7 @@ import {
   SidebarHeader,
   useSidebar,
 } from "../components/ui/sidebar";
+import React from "react";
 
 const items = [
   { title: "Home", url: "/dashboard", icon: Home },
@@ -33,9 +34,16 @@ const items = [
 ];
 
 export function AppSidebar() {
-  const { state } = useSidebar();
+  const { state, isMobile, setOpenMobile } = useSidebar();
   const collapsed = state === "collapsed";
   const pathname = usePathname();
+
+  // Automatically close sidebar on mobile when navigating
+  React.useEffect(() => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  }, [pathname, isMobile, setOpenMobile]);
 
   return (
     <Sidebar collapsible="icon" className="border-r border-sidebar-border">

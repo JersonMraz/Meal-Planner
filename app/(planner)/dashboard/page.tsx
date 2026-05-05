@@ -131,43 +131,45 @@ export default function Home() {
             </div>
 
             {/* Today's meal plan */}
-            <section>
-                <h2 className="text-lg font-heading font-semibold text-foreground mb-3">Today's Meal Plan</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {todayMeal?.map((m: any) => {
-                        return (
-                            <div key={m.id} className="rounded-xl bg-card shadow-soft p-4">
-                                <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{m.meal_type}</p>
-                                {m.Meal ? (
-                                    <div className="flex items-center gap-3">
-                                        {m.Meal.image_url ?
-                                            <Image
-                                                src={m.Meal.image_url}
-                                                alt={m.Meal.name}
-                                                className="h-12 w-12 rounded-lg object-cover"
-                                                loading="lazy"
-                                                width={120}
-                                                height={120} />
-                                            :
-                                            <div className="h-12 w-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground">
-                                                <svg className="h-12 w-12 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                    <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19v-6.6l3 3l4-4l4 4l4-4l3 3V19q0 .825-.587 1.413T19 21zM5 3h14q.825 0 1.413.588T21 5v6.575l-3-3l-4 4l-4-4l-4 4l-3-3V5q0-.825.588-1.412T5 3" />
-                                                </svg>
+            {todayMeal?.length > 0 && (
+                <section>
+                    <h2 className="text-lg font-heading font-semibold text-foreground mb-3">Today's Meal Plan</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        {todayMeal?.map((m: any) => {
+                            return (
+                                <div key={m.id} className="rounded-xl bg-card shadow-soft p-4">
+                                    <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{m.meal_type}</p>
+                                    {m.Meal ? (
+                                        <div className="flex items-center gap-3">
+                                            {m.Meal.image_url ?
+                                                <Image
+                                                    src={m.Meal.image_url}
+                                                    alt={m.Meal.name}
+                                                    className="h-12 w-12 rounded-lg object-cover"
+                                                    loading="lazy"
+                                                    width={120}
+                                                    height={120} />
+                                                :
+                                                <div className="h-12 w-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground">
+                                                    <svg className="h-12 w-12 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                        <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19v-6.6l3 3l4-4l4 4l4-4l3 3V19q0 .825-.587 1.413T19 21zM5 3h14q.825 0 1.413.588T21 5v6.575l-3-3l-4 4l-4-4l-4 4l-3-3V5q0-.825.588-1.412T5 3" />
+                                                    </svg>
+                                                </div>
+                                            }
+                                            <div>
+                                                <p className="text-sm font-medium text-card-foreground">{m.Meal.name}</p>
+                                                <p className="text-xs text-muted-foreground">{m.Meal.Nutrition?.calories} cal · {m.Meal.prep_time} min</p>
                                             </div>
-                                        }
-                                        <div>
-                                            <p className="text-sm font-medium text-card-foreground">{m.Meal.name}</p>
-                                            <p className="text-xs text-muted-foreground">{m.Meal.Nutrition?.calories} cal · {m.Meal.prep_time} min</p>
                                         </div>
-                                    </div>
-                                ) : (
-                                    <p className="text-sm text-muted-foreground italic">No meal planned</p>
-                                )}
-                            </div>
-                        );
-                    })}
-                </div>
-            </section>
+                                    ) : (
+                                        <p className="text-sm text-muted-foreground italic">No meal planned</p>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
+                </section>
+            )}
 
             {/* Recommended */}
             <section>
