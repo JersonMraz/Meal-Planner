@@ -1,13 +1,19 @@
 "use client";
 import { Clock, Flame, Heart, HeartCrack } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useUser } from "../contexts/UserContext";
+import { Toaster, toast } from "sonner";
 
 export function RecipeCard({ recipe, onRemove }: { recipe: any, onRemove?: (id: number) => void }) {
   const [saved, setSaved] = useState(recipe.saved ?? false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isRemoving, setIsRemoving] = useState(false);
+
+  // Sync state with props if they change externally (e.g. after async favorites fetch)
+  useEffect(() => {
+    setSaved(recipe.saved ?? false);
+  }, [recipe.saved]);
 
   const { user } = useUser();
 
@@ -15,20 +21,37 @@ export function RecipeCard({ recipe, onRemove }: { recipe: any, onRemove?: (id: 
     e.preventDefault();
     e.stopPropagation();
     if (!user) return;
+
+    // Optimistic update
+    const previousSaved = saved;
+
     try {
       const res = await fetch(`/api/favorite`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ mealId: recipe.id, userId: user.id })
       });
+
       const data = await res.json();
+
+      if (res.status === 429) {
+        toast.error(data.error || "Slow down! You're favoriting too fast.");
+        return;
+      }
+
       if (data.action === "added") {
         setSaved(true);
         setIsAnimating(true);
+        toast.success(`"${recipe.name}" added to favorites`, { position: "top-center" });
+
+        // Trigger real-time notification update
+        window.dispatchEvent(new Event("notification-update"));
+
         setTimeout(() => setIsAnimating(false), 1000);
       } else if (data.action === "removed") {
         setSaved(false);
         setIsRemoving(true);
+        toast.info(`"${recipe.name}" removed from favorites`);
         setTimeout(() => {
           setIsRemoving(false);
           if (onRemove) onRemove(recipe.id);
@@ -36,6 +59,8 @@ export function RecipeCard({ recipe, onRemove }: { recipe: any, onRemove?: (id: 
       }
     } catch (err) {
       console.error(err);
+      setSaved(previousSaved); // Revert on error
+      toast.error("Something went wrong. Please try again.");
     }
   }
 

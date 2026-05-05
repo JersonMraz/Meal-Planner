@@ -17,7 +17,16 @@ export async function registerUser(firstname: string, lastname: string, email: s
             lastname,
             email,
             password: hashed,
-        },
+            dietaryPreferences: {
+                create: {} // Creates record with defaults from schema
+            },
+            notificationSettings: {
+                create: {} // Creates record with defaults from schema
+            },
+            languageAndRegion: {
+                create: {} // Creates record with defaults from schema
+            }
+        }
     });
 
     return user;

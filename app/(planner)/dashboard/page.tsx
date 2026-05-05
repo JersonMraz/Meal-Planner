@@ -2,7 +2,6 @@
 
 import { BookOpen, CalendarCheck, TrendingUp, Utensils } from "lucide-react";
 import { RecipeCard } from "@/app/components/RecipeCard";
-import { recipes, mealPlan } from "@/app/data/recipes";
 import heroImg from "@/app/assets/hero-recipe.jpg";
 // import { div } from "framer-motion/client";
 import Image from "next/image";
@@ -20,13 +19,11 @@ const staticStats = [
 const days = ["Mon", "Tue", "Wed"];
 
 export default function Home() {
-    const [firstname, setFirstname] = useState("");
-    const [lastname, setLastname] = useState("");
-    const [email, setEmail] = useState("");
+    const { user } = useUser();
+    const [todayMeal, setTodayMeal] = useState([]);
     const router = useRouter();
     const [meals, setMeals] = useState([]);
     const [stats, setStats] = useState<any[]>(staticStats);
-    const { user } = useUser();
 
     useEffect(() => {
         const fetchMeals = async () => {
@@ -35,7 +32,21 @@ export default function Home() {
                 const data = await res.json();
 
                 if (data.success) {
-                    setMeals(data.meals);
+                    let favoriteMealIds: number[] = [];
+                    if (user?.id) {
+                        const favMeal = await fetch(`/api/favorite?userId=${user.id}`);
+                        if (favMeal.ok) {
+                            const favdata = await favMeal.json();
+                            const favoriteObjects = favdata.favorite || [];
+                            favoriteMealIds = favoriteObjects.map((f: any) => f.meal_id);
+
+                        }
+                    }
+                    const mealWithFavStatus = data.meals.map((meal: any) => ({
+                        ...meal,
+                        saved: favoriteMealIds.includes(meal.id)
+                    }));
+                    setMeals(mealWithFavStatus);
                 }
             } catch (error) {
                 console.log("Error fetching meals:", error);
@@ -43,7 +54,7 @@ export default function Home() {
         };
 
         fetchMeals();
-    }, []);
+    }, [user?.id]);
 
     useEffect(() => {
         const fetchStats = async () => {
@@ -55,8 +66,10 @@ export default function Home() {
                 if (data.totalFavorites !== undefined) {
                     setStats((prevStats) => {
                         const newStats = [...prevStats];
-                        newStats[0].value = data.totalFavorites.toString(); // Update Recipes Saved
-                        // The other stats will remain as their static values for now
+                        newStats[0].value = data.totalFavorites.toString(); //Recipes saved
+                        newStats[1].value = data.totalMealPlans.toString(); //Meals planned
+                        newStats[2].value = data.thisWeek.toString() + " days"; //Meals plan this week
+                        newStats[3].value = data.averageCalories.toString() + " cal"; //Average calories
                         return newStats;
                     });
                 }
@@ -69,22 +82,20 @@ export default function Home() {
     }, [user?.id]);
 
     useEffect(() => {
-        const fetchUser = async () => {
+        const fetchTodayMeal = async () => {
             try {
-                const response = await fetch('/api/auth/me')
+                const response = await fetch('/api/auth/todaymeal')
 
-                if (!response.ok) return console.error("Failed to fetch user")
+                if (!response.ok) return console.error("Failed to fetch today's meal")
 
                 const data = await response.json();
-                setEmail(data.user.email)
-                setFirstname(data.user.firstname)
-                setLastname(data.user.lastname)
+                setTodayMeal(data);
             } catch (error) {
                 console.log(error)
             }
         }
 
-        fetchUser()
+        fetchTodayMeal()
     }, [])
 
     return (
@@ -92,10 +103,10 @@ export default function Home() {
             {/* Welcome hero */}
             <div className="relative overflow-hidden rounded-2xl">
                 <Image src={heroImg} loading="eager" alt="Fresh food" className="h-48 md:h-56 w-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 to-foreground/20 flex items-center px-6 md:px-10">
+                <div className="absolute inset-0 bg-linear-to-r from-foreground/70 to-foreground/20 flex items-center px-6 md:px-10">
                     <div>
                         <h1 className="text-2xl md:text-3xl font-heading font-bold text-primary-foreground">
-                            Good morning, {firstname} {lastname} 👋
+                            Good morning, {user?.firstname} {user?.lastname} 👋
                         </h1>
                         <p className="mt-1 text-sm text-primary-foreground/80 max-w-md">
                             You have 3 meals planned for today. Let's make something delicious!
@@ -123,18 +134,30 @@ export default function Home() {
             <section>
                 <h2 className="text-lg font-heading font-semibold text-foreground mb-3">Today's Meal Plan</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {(["breakfast", "lunch", "dinner"] as const).map((meal) => {
-                        const recipeId = mealPlan["Mon"]?.[meal];
-                        const recipe = recipeId ? recipes.find((r) => r.id === recipeId) : null;
+                    {todayMeal?.map((m: any) => {
                         return (
-                            <div key={meal} className="rounded-xl bg-card shadow-soft p-4">
-                                <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{meal}</p>
-                                {recipe ? (
+                            <div key={m.id} className="rounded-xl bg-card shadow-soft p-4">
+                                <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{m.meal_type}</p>
+                                {m.Meal ? (
                                     <div className="flex items-center gap-3">
-                                        <Image src={recipe.image} alt={recipe.title} className="h-12 w-12 rounded-lg object-cover" loading="lazy" />
+                                        {m.Meal.image_url ?
+                                            <Image
+                                                src={m.Meal.image_url}
+                                                alt={m.Meal.name}
+                                                className="h-12 w-12 rounded-lg object-cover"
+                                                loading="lazy"
+                                                width={120}
+                                                height={120} />
+                                            :
+                                            <div className="h-12 w-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground">
+                                                <svg className="h-12 w-12 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                    <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19v-6.6l3 3l4-4l4 4l4-4l3 3V19q0 .825-.587 1.413T19 21zM5 3h14q.825 0 1.413.588T21 5v6.575l-3-3l-4 4l-4-4l-4 4l-3-3V5q0-.825.588-1.412T5 3" />
+                                                </svg>
+                                            </div>
+                                        }
                                         <div>
-                                            <p className="text-sm font-medium text-card-foreground">{recipe.title}</p>
-                                            <p className="text-xs text-muted-foreground">{recipe.calories} cal · {recipe.prepTime} min</p>
+                                            <p className="text-sm font-medium text-card-foreground">{m.Meal.name}</p>
+                                            <p className="text-xs text-muted-foreground">{m.Meal.Nutrition?.calories} cal · {m.Meal.prep_time} min</p>
                                         </div>
                                     </div>
                                 ) : (
@@ -150,7 +173,7 @@ export default function Home() {
             <section>
                 <h2 className="text-lg font-heading font-semibold text-foreground mb-3">Recommended Recipes</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {meals.slice(0, 6).map((meal: any) => (
+                    {meals.map((meal: any) => (
                         <RecipeCard key={meal.id} recipe={meal} />
                     ))}
                 </div>

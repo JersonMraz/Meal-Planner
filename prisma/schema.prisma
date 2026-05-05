@@ -77,11 +77,60 @@ model User {
   lastname  String
   email     String     @unique
   password  String
+  bio       String?
+  profile_picture String?
   role      String     @default("USER")
   createdAt DateTime   @default(now())
   Favorite    Favorite[]
   MealPlan    MealPlan[]
   GroceryItem GroceryItem[]
+  dietaryPreferences DietaryPreferences?
+  notificationSettings NotificationSettings?
+  languageAndRegion LanguageAndRegion?
+  Notifications Notifications[]
+}
+
+model DietaryPreferences {
+  user_id    Int @id
+  default_diet  String? @default("No restrictions")
+  allergens  String[]
+  favorite_cuisines   String[]
+  calorieGoal Int? 
+  User User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model Notifications {
+  id          Int @id @default(autoincrement())
+  user_id     Int
+  type        String
+  title       String
+  description String
+  icon String
+  icon_class String
+  link String?
+  is_read     Boolean @default(false)
+  created_at  DateTime @default(now())
+  User        User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model NotificationSettings {
+  user_id     Int @id
+  meal_reminders Boolean @default(true)
+  grocery_reminders Boolean @default(true)
+  weekly_digest Boolean @default(false)
+  product_updates Boolean @default(false)
+  push_enabled Boolean @default(true)
+  email_enabled Boolean @default(true)
+  reminder_time String @default("18:00")
+  User User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model LanguageAndRegion {
+  user_id    Int @id
+  language String @default("English")
+  region String @default("United States")
+  weekStart String @default("monday")
+  User User @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
 
 model MealPlan {

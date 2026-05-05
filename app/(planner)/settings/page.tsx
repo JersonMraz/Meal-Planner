@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
     Bell,
     Globe,
@@ -12,6 +12,8 @@ import {
     Sparkles,
     Moon,
     Smartphone,
+    Plus,
+    X,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/app/components/ui/avatar";
 import { Badge } from "@/app/components/ui/badge";
@@ -36,7 +38,7 @@ import {
 import { Switch } from "@/app/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/app/components/ui/tabs";
 import { Textarea } from "@/app/components/ui/textarea";
-import { toast } from "sonner";
+import { Toaster, toast } from "sonner";
 import { cn } from "@/app/lib/utils";
 
 const DIETS = [
@@ -49,7 +51,7 @@ const DIETS = [
     "Mediterranean",
 ];
 
-const ALLERGENS = [
+const ALLERGEN_SUGGESTIONS = [
     "Gluten",
     "Dairy",
     "Eggs",
@@ -61,7 +63,7 @@ const ALLERGENS = [
     "Sesame",
 ];
 
-const CUISINES = [
+const CUISINE_SUGGESTIONS = [
     "Italian",
     "Mexican",
     "Japanese",
@@ -75,24 +77,26 @@ const CUISINES = [
 
 export default function SettingsPage() {
     // Profile
-    const [name, setName] = useState("Alex Morgan");
-    const [email, setEmail] = useState("alex@example.com");
-    const [bio, setBio] = useState("Home cook exploring plant-forward recipes.");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
+    const [bio, setBio] = useState("");
+    const [profile_picture, setProfile_picture] = useState("");
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     // Dietary
-    const [diet, setDiet] = useState("Mediterranean");
-    const [allergens, setAllergens] = useState<string[]>(["Peanuts"]);
-    const [cuisines, setCuisines] = useState<string[]>(["Italian", "Japanese"]);
-    const [calorieGoal, setCalorieGoal] = useState("2000");
-
+    const [diet, setDiet] = useState<string>();
+    const [allergens, setAllergens] = useState<string[]>([]);
+    const [cuisines, setCuisines] = useState<string[]>([]);
+    const [calorieGoal, setCalorieGoal] = useState<number>();
     // Notifications
-    const [mealReminders, setMealReminders] = useState(true);
-    const [groceryReminders, setGroceryReminders] = useState(true);
-    const [weeklyDigest, setWeeklyDigest] = useState(false);
-    const [productUpdates, setProductUpdates] = useState(false);
-    const [pushEnabled, setPushEnabled] = useState(true);
-    const [emailEnabled, setEmailEnabled] = useState(true);
-    const [reminderTime, setReminderTime] = useState("18:00");
+    const [mealReminders, setMealReminders] = useState<boolean>();
+    const [groceryReminders, setGroceryReminders] = useState<boolean>();
+    const [weeklyDigest, setWeeklyDigest] = useState<boolean>();
+    const [productUpdates, setProductUpdates] = useState<boolean>();
+    const [pushEnabled, setPushEnabled] = useState<boolean>();
+    const [emailEnabled, setEmailEnabled] = useState<boolean>();
+    const [reminderTime, setReminderTime] = useState<string>();
 
     // Language & Region
     const [language, setLanguage] = useState("English");
@@ -102,18 +106,191 @@ export default function SettingsPage() {
     const [weekStart, setWeekStart] = useState("monday");
     const [darkMode, setDarkMode] = useState(false);
 
-    const toggleFromList = (
+    const [allergenInput, setAllergenInput] = useState("");
+    const [cuisineInput, setCuisineInput] = useState("");
+
+    const addToList = (
+        value: string,
+        list: string[],
+        setList: (v: string[]) => void,
+        reset: () => void,
+    ) => {
+        const v = value.trim();
+        if (!v) return;
+        if (!list.some((item) => item.toLowerCase() === v.toLowerCase())) {
+            setList([...list, v]);
+        }
+        reset();
+    };
+
+    const removeFromList = (
         value: string,
         list: string[],
         setList: (v: string[]) => void,
     ) => {
-        setList(list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
+        setList(list.filter((v) => v !== value));
     };
 
-    const handleSave = (section: string) => {
-        toast.success(`${section} saved`, {
-            description: "Your preferences have been updated.",
-        });
+    const handleSave = async (section: string) => {
+        const toastId = toast.loading(`Updating your ${section.toLowerCase()}...`);
+        try {
+            let response;
+            switch (section) {
+                case "Profile":
+                    response = await fetch("/api/auth/profile", {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            firstname,
+                            lastname,
+                            bio,
+                            profile_picture,
+                        }),
+                    });
+                    break;
+                case "Diet":
+                    response = await fetch("/api/auth/dietpreference", {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            diet,
+                            allergens,
+                            cuisines,
+                            calorieGoal,
+                        }),
+                    });
+                    break;
+                case "Notifications":
+                    response = await fetch("/api/auth/notifpreference", {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            mealReminders,
+                            groceryReminders,
+                            weeklyDigest,
+                            productUpdates,
+                            pushEnabled,
+                            emailEnabled,
+                            reminderTime,
+                        }),
+                    });
+                    break;
+                case "Language & Region":
+                    response = await fetch("/api/auth/language", {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            language,
+                            region,
+                            weekStart,
+                        }),
+                    });
+                    break;
+                default:
+                    throw new Error("Invalid section");
+            }
+
+            if (!response?.ok) {
+                const errorData = await response?.json().catch(() => ({}));
+                throw new Error(errorData?.error || `Failed to save ${section}`);
+            }
+
+            window.dispatchEvent(new Event("notification-update"));
+            toast.success(`${section} updated successfully!`, { id: toastId, position: "top-center" });
+        } catch (error: any) {
+            console.error(error);
+            toast.error(error.message || `Could not update ${section}`, { id: toastId, position: "top-center" });
+        }
+    };
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await fetch('/api/auth/me')
+
+                if (!response.ok) return console.error("Failed to fetch user")
+
+                const data = await response.json();
+
+                //Profile
+                setEmail(data.user.email)
+                setBio(data.user.bio)
+                setFirstname(data.user.firstname)
+                setLastname(data.user.lastname)
+                setProfile_picture(data.user.profile_picture)
+
+                //Diet
+                setDiet(data.user.dietaryPreferences.default_diet)
+                setAllergens(data.user.dietaryPreferences.allergens)
+                setCuisines(data.user.dietaryPreferences.favorite_cuisines)
+                setCalorieGoal(data.user.dietaryPreferences.calorieGoal)
+
+                //Notifications
+                setMealReminders(data.user.notificationSettings.meal_reminders)
+                setGroceryReminders(data.user.notificationSettings.grocery_reminders)
+                setWeeklyDigest(data.user.notificationSettings.weekly_digest)
+                setProductUpdates(data.user.notificationSettings.product_updates)
+                setPushEnabled(data.user.notificationSettings.push_enabled)
+                setEmailEnabled(data.user.notificationSettings.email_enabled)
+                setReminderTime(data.user.notificationSettings.reminder_time)
+
+                //Language & Region
+                setLanguage(data.user.languageAndRegion.language)
+                setRegion(data.user.languageAndRegion.region)
+                setWeekStart(data.user.languageAndRegion.weekStart)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        fetchUser()
+    }, [])
+
+    const handleChangeProfilePhoto = () => {
+        fileInputRef.current?.click();
+    };
+
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const toastId = toast.loading("Updating profile photo...");
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+            const uploadResponse = await fetch("/api/upload", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (!uploadResponse.ok) throw new Error("Upload failed");
+
+            const { image_url } = await uploadResponse.json();
+            setProfile_picture(image_url);
+
+            // Update user profile with the new image URL
+            const profileResponse = await fetch("/api/auth/profile", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    firstname,
+                    lastname,
+                    bio,
+                    profile_picture: image_url,
+                }),
+            });
+
+            if (profileResponse.ok) {
+                toast.success("Profile photo updated", { id: toastId, position: "top-center" });
+            } else {
+                throw new Error("Failed to update profile");
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error("Error updating profile photo", { id: toastId, position: "top-center" });
+        }
     };
 
     return (
@@ -127,16 +304,16 @@ export default function SettingsPage() {
 
             <Tabs defaultValue="profile" className="w-full">
                 <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto gap-1 bg-secondary p-1">
-                    <TabsTrigger value="profile" className="gap-2 py-2">
+                    <TabsTrigger value="profile" className="gap-2 py-2 cursor-pointer">
                         <User className="h-4 w-4" /> Profile
                     </TabsTrigger>
-                    <TabsTrigger value="diet" className="gap-2 py-2">
+                    <TabsTrigger value="diet" className="gap-2 py-2 cursor-pointer">
                         <Utensils className="h-4 w-4" /> Diet
                     </TabsTrigger>
-                    <TabsTrigger value="notifications" className="gap-2 py-2">
+                    <TabsTrigger value="notifications" className="gap-2 py-2 cursor-pointer">
                         <Bell className="h-4 w-4" /> Alerts
                     </TabsTrigger>
-                    <TabsTrigger value="region" className="gap-2 py-2">
+                    <TabsTrigger value="region" className="gap-2 py-2 cursor-pointer">
                         <Globe className="h-4 w-4" /> Region
                     </TabsTrigger>
                 </TabsList>
@@ -150,27 +327,34 @@ export default function SettingsPage() {
                         </CardHeader>
                         <CardContent className="space-y-6">
                             <div className="flex items-center gap-4">
-                                <Avatar className="h-20 w-20 border-2 border-border">
-                                    <AvatarImage src="" alt={name} />
+                                <Avatar className="h-30 w-30 border-2 border-border">
+                                    <AvatarImage src={profile_picture} alt={firstname + " " + lastname} className="object-cover" />
                                     <AvatarFallback className="bg-primary/10 text-primary font-heading text-xl">
-                                        {name
-                                            .split(" ")
-                                            .map((n) => n[0])
-                                            .join("")
-                                            .slice(0, 2)}
+                                        {firstname.charAt(0) + lastname.charAt(0)}
                                     </AvatarFallback>
                                 </Avatar>
-                                <Button variant="outline" size="sm" className="gap-2">
+                                <Button variant="outline" size="sm" className="gap-2" onClick={handleChangeProfilePhoto}>
                                     <Camera className="h-4 w-4" /> Change photo
                                 </Button>
+                                <input
+                                    type="file"
+                                    ref={fileInputRef}
+                                    className="hidden"
+                                    accept="image/*"
+                                    onChange={handleFileChange}
+                                />
                             </div>
 
                             <Separator />
 
                             <div className="grid gap-4 sm:grid-cols-2">
                                 <div className="space-y-2">
-                                    <Label htmlFor="name">Full name</Label>
-                                    <Input id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                                    <Label htmlFor="firstname">First name</Label>
+                                    <Input id="firstname" value={firstname} onChange={(e) => setFirstname(e.target.value)} />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="lastname">Last name</Label>
+                                    <Input id="lastname" value={lastname} onChange={(e) => setLastname(e.target.value)} />
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="email">Email</Label>
@@ -192,7 +376,7 @@ export default function SettingsPage() {
                                 <Textarea
                                     id="bio"
                                     rows={3}
-                                    value={bio}
+                                    value={bio || ""}
                                     onChange={(e) => setBio(e.target.value)}
                                     placeholder="A short note about your cooking style..."
                                 />
@@ -219,7 +403,7 @@ export default function SettingsPage() {
                         <CardContent className="space-y-6">
                             <div className="space-y-2">
                                 <Label>Default diet</Label>
-                                <Select value={diet} onValueChange={setDiet}>
+                                <Select value={diet || "No restrictions"} onValueChange={(value) => setDiet(value)}>
                                     <SelectTrigger>
                                         <SelectValue />
                                     </SelectTrigger>
@@ -235,49 +419,137 @@ export default function SettingsPage() {
 
                             <div className="space-y-3">
                                 <Label>Allergens to avoid</Label>
-                                <div className="flex flex-wrap gap-2">
-                                    {ALLERGENS.map((a) => {
-                                        const active = allergens.includes(a);
-                                        return (
-                                            <button
+                                <div className="flex gap-2">
+                                    <Input
+                                        id="allergen-input"
+                                        placeholder="Type an allergen and press Enter"
+                                        value={allergenInput}
+                                        maxLength={40}
+                                        onChange={(e) => setAllergenInput(e.target.value)}
+                                        onKeyDown={(e) => {
+                                            if (e.key === "Enter") {
+                                                e.preventDefault();
+                                                addToList(allergenInput, allergens, setAllergens, () => setAllergenInput(""));
+                                            }
+                                        }}
+                                    />
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        onClick={() =>
+                                            addToList(allergenInput, allergens, setAllergens, () => setAllergenInput(""))
+                                        }
+                                        className="gap-1 shrink-0"
+                                    >
+                                        <Plus className="h-4 w-4" /> Add
+                                    </Button>
+                                </div>
+                                {allergens.length > 0 ? (
+                                    <div className="flex flex-wrap gap-2 pt-1">
+                                        {allergens.map((a) => (
+                                            <span
                                                 key={a}
-                                                type="button"
-                                                onClick={() => toggleFromList(a, allergens, setAllergens)}
-                                                className={cn(
-                                                    "px-3 py-1.5 rounded-full text-sm border transition-colors",
-                                                    active
-                                                        ? "bg-destructive/10 border-destructive/30 text-destructive"
-                                                        : "bg-background border-border text-foreground hover:bg-secondary",
-                                                )}
+                                                className="inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1 rounded-full text-sm bg-destructive/10 border border-destructive/30 text-destructive"
                                             >
                                                 {a}
+                                                <button
+                                                    type="button"
+                                                    onClick={() => removeFromList(a, allergens, setAllergens)}
+                                                    className="rounded-full hover:bg-destructive/20 p-0.5"
+                                                    aria-label={`Remove ${a}`}
+                                                >
+                                                    <X className="h-3 w-3" />
+                                                </button>
+                                            </span>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <p className="text-xs text-muted-foreground">No allergens added yet.</p>
+                                )}
+                                <div className="flex flex-wrap gap-1.5 pt-1">
+                                    <span className="text-xs text-muted-foreground mr-1 self-center">Suggestions:</span>
+                                    {ALLERGEN_SUGGESTIONS.filter(
+                                        (s) => !allergens.some((a) => a.toLowerCase() === s.toLowerCase()),
+                                    )
+                                        .slice(0, 6)
+                                        .map((s) => (
+                                            <button
+                                                key={s}
+                                                type="button"
+                                                onClick={() => addToList(s, allergens, setAllergens, () => { })}
+                                                className="text-xs px-2 py-0.5 rounded-full border border-dashed border-border text-muted-foreground hover:bg-secondary hover:text-foreground"
+                                            >
+                                                + {s}
                                             </button>
-                                        );
-                                    })}
+                                        ))}
                                 </div>
                             </div>
 
                             <div className="space-y-3">
-                                <Label>Favorite cuisines</Label>
-                                <div className="flex flex-wrap gap-2">
-                                    {CUISINES.map((c) => {
-                                        const active = cuisines.includes(c);
-                                        return (
-                                            <button
+                                <Label htmlFor="cuisine-input">Favorite cuisines</Label>
+                                <div className="flex gap-2">
+                                    <Input
+                                        id="cuisine-input"
+                                        placeholder="Type a cuisine and press Enter"
+                                        value={cuisineInput}
+                                        maxLength={40}
+                                        onChange={(e) => setCuisineInput(e.target.value)}
+                                        onKeyDown={(e) => {
+                                            if (e.key === "Enter") {
+                                                e.preventDefault();
+                                                addToList(cuisineInput, cuisines, setCuisines, () => setCuisineInput(""));
+                                            }
+                                        }}
+                                    />
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        onClick={() =>
+                                            addToList(cuisineInput, cuisines, setCuisines, () => setCuisineInput(""))
+                                        }
+                                        className="gap-1 shrink-0"
+                                    >
+                                        <Plus className="h-4 w-4" /> Add
+                                    </Button>
+                                </div>
+                                {cuisines.length > 0 ? (
+                                    <div className="flex flex-wrap gap-2 pt-1">
+                                        {cuisines.map((c) => (
+                                            <span
                                                 key={c}
-                                                type="button"
-                                                onClick={() => toggleFromList(c, cuisines, setCuisines)}
-                                                className={cn(
-                                                    "px-3 py-1.5 rounded-full text-sm border transition-colors",
-                                                    active
-                                                        ? "bg-primary/10 border-primary/30 text-primary"
-                                                        : "bg-background border-border text-foreground hover:bg-secondary",
-                                                )}
+                                                className="inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1 rounded-full text-sm bg-primary/10 border border-primary/30 text-primary"
                                             >
                                                 {c}
+                                                <button
+                                                    type="button"
+                                                    onClick={() => removeFromList(c, cuisines, setCuisines)}
+                                                    className="rounded-full hover:bg-primary/20 p-0.5"
+                                                    aria-label={`Remove ${c}`}
+                                                >
+                                                    <X className="h-3 w-3" />
+                                                </button>
+                                            </span>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <p className="text-xs text-muted-foreground">No cuisines added yet.</p>
+                                )}
+                                <div className="flex flex-wrap gap-1.5 pt-1">
+                                    <span className="text-xs text-muted-foreground mr-1 self-center">Suggestions:</span>
+                                    {CUISINE_SUGGESTIONS.filter(
+                                        (s) => !cuisines.some((c) => c.toLowerCase() === s.toLowerCase()),
+                                    )
+                                        .slice(0, 6)
+                                        .map((s) => (
+                                            <button
+                                                key={s}
+                                                type="button"
+                                                onClick={() => addToList(s, cuisines, setCuisines, () => { })}
+                                                className="text-xs px-2 py-0.5 rounded-full border border-dashed border-border text-muted-foreground hover:bg-secondary hover:text-foreground"
+                                            >
+                                                + {s}
                                             </button>
-                                        );
-                                    })}
+                                        ))}
                                 </div>
                             </div>
 
@@ -287,8 +559,8 @@ export default function SettingsPage() {
                                     <Input
                                         id="calories"
                                         type="number"
-                                        value={calorieGoal}
-                                        onChange={(e) => setCalorieGoal(e.target.value)}
+                                        value={calorieGoal || ""}
+                                        onChange={(e) => setCalorieGoal(Number(e.target.value))}
                                     />
                                 </div>
                                 <div className="rounded-lg bg-accent/10 border border-accent/20 p-3 flex items-start gap-2">
@@ -300,7 +572,7 @@ export default function SettingsPage() {
                             </div>
 
                             <div className="flex justify-end">
-                                <Button onClick={() => handleSave("Dietary preferences")} className="gap-2">
+                                <Button onClick={() => handleSave("Diet")} className="gap-2">
                                     <Save className="h-4 w-4" /> Save changes
                                 </Button>
                             </div>
@@ -378,7 +650,7 @@ export default function SettingsPage() {
                                                 <p className="text-sm font-medium text-foreground">{row.title}</p>
                                                 <p className="text-xs text-muted-foreground">{row.desc}</p>
                                             </div>
-                                            <Switch checked={row.checked} onCheckedChange={row.set} />
+                                            <Switch checked={!!row.checked} onCheckedChange={row.set} />
                                         </div>
                                     ))}
                                 </div>
@@ -390,7 +662,7 @@ export default function SettingsPage() {
                                     id="reminderTime"
                                     type="time"
                                     value={reminderTime}
-                                    onChange={(e) => setReminderTime(e.target.value)}
+                                    onChange={(e) => setReminderTime(e.target.value as string)}
                                 />
                             </div>
 
@@ -415,13 +687,18 @@ export default function SettingsPage() {
                         <CardContent className="space-y-6">
                             <div className="grid gap-4 sm:grid-cols-2">
                                 <div className="space-y-2">
-                                    <Label>Language</Label>
-                                    <Select value={language} onValueChange={setLanguage}>
+                                    <Label>
+                                        Language
+                                        <Badge variant="default" className="ml-2 cursor-not-allowed">
+                                            Coming soon
+                                        </Badge>
+                                    </Label>
+                                    <Select value={language} onValueChange={setLanguage} disabled>
                                         <SelectTrigger>
                                             <SelectValue />
                                         </SelectTrigger>
                                         <SelectContent>
-                                            {["English", "Español", "Français", "Deutsch", "日本語", "中文"].map((l) => (
+                                            {["English", "Tagalog"].map((l) => (
                                                 <SelectItem key={l} value={l}>
                                                     {l}
                                                 </SelectItem>
@@ -430,8 +707,13 @@ export default function SettingsPage() {
                                     </Select>
                                 </div>
                                 <div className="space-y-2">
-                                    <Label>Region</Label>
-                                    <Select value={region} onValueChange={setRegion}>
+                                    <Label>
+                                        Region
+                                        <Badge variant="default" className="ml-2 cursor-not-allowed">
+                                            Coming soon
+                                        </Badge>
+                                    </Label>
+                                    <Select value={region} onValueChange={setRegion} disabled>
                                         <SelectTrigger>
                                             <SelectValue />
                                         </SelectTrigger>
@@ -452,49 +734,14 @@ export default function SettingsPage() {
                                         </SelectContent>
                                     </Select>
                                 </div>
-                            </div>
-
-                            <div className="space-y-3">
-                                <Label>Measurement units</Label>
-                                <div className="grid grid-cols-2 gap-2 max-w-md">
-                                    {[
-                                        { v: "imperial", label: "Imperial", hint: "cups, oz, lb" },
-                                        { v: "metric", label: "Metric", hint: "ml, g, kg" },
-                                    ].map((u) => (
-                                        <button
-                                            key={u.v}
-                                            type="button"
-                                            onClick={() => setUnits(u.v)}
-                                            className={cn(
-                                                "rounded-lg border p-3 text-left transition-colors",
-                                                units === u.v
-                                                    ? "bg-primary/10 border-primary/40"
-                                                    : "bg-background border-border hover:bg-secondary",
-                                            )}
-                                        >
-                                            <p className="text-sm font-medium text-foreground">{u.label}</p>
-                                            <p className="text-xs text-muted-foreground">{u.hint}</p>
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="grid gap-4 sm:grid-cols-2">
                                 <div className="space-y-2">
-                                    <Label>Temperature</Label>
-                                    <Select value={tempUnit} onValueChange={setTempUnit}>
-                                        <SelectTrigger>
-                                            <SelectValue />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="F">Fahrenheit (°F)</SelectItem>
-                                            <SelectItem value="C">Celsius (°C)</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                                <div className="space-y-2">
-                                    <Label>Week starts on</Label>
-                                    <Select value={weekStart} onValueChange={setWeekStart}>
+                                    <Label>
+                                        Week starts on
+                                        <Badge variant="default" className="ml-2 cursor-not-allowed">
+                                            Coming soon
+                                        </Badge>
+                                    </Label>
+                                    <Select value={weekStart} onValueChange={setWeekStart} disabled>
                                         <SelectTrigger>
                                             <SelectValue />
                                         </SelectTrigger>
@@ -517,7 +764,9 @@ export default function SettingsPage() {
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Badge variant="secondary" className="text-xs">Beta</Badge>
+                                    <Badge variant="secondary" className="cursor-not-allowed">
+                                        Beta
+                                    </Badge>
                                     <Switch
                                         checked={darkMode}
                                         onCheckedChange={(v) => {
@@ -529,7 +778,11 @@ export default function SettingsPage() {
                             </div>
 
                             <div className="flex justify-end">
-                                <Button onClick={() => handleSave("Language & region")} className="gap-2">
+                                <Button
+                                    // onClick={() => handleSave("Language & Region")}
+                                    className="gap-2 cursor-not-allowed"
+                                    variant="secondary"
+                                >
                                     <Save className="h-4 w-4" /> Save changes
                                 </Button>
                             </div>

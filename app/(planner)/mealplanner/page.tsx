@@ -31,7 +31,6 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "@/app/components/ui/alert-dialog";
-import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { useUser } from "@/app/contexts/UserContext";
 
@@ -196,7 +195,10 @@ export default function MealPlanner() {
                     meal_id: recipeId
                 })
             });
-        } catch(err) {
+
+            // Trigger real-time notification update
+            window.dispatchEvent(new Event("notification-update"));
+        } catch (err) {
             console.error(err);
         }
     };

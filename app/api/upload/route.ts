@@ -7,8 +7,8 @@ export async function POST(req: Request) {
         const file = formData.get("file") as File;
         const mealId = formData.get("mealId") as string;
 
-        if (!file || !mealId) {
-            return Response.json({ error: "Missing file or mealId" }, { status: 400 });
+        if (!file) {
+            return Response.json({ error: "Missing file" }, { status: 400 });
         }
 
         const bytes = await file.arrayBuffer();
@@ -23,17 +23,24 @@ export async function POST(req: Request) {
                 .end(buffer);
         });
 
-        const updatedMeal = await prisma.meal.update({
-            where: { id: parseInt(mealId) },
-            data: {
+        if (mealId) {
+            const updatedMeal = await prisma.meal.update({
+                where: { id: parseInt(mealId) },
+                data: {
+                    image_url: uploadResult.secure_url,
+                },
+            });
+
+            return Response.json({
+                success: true,
                 image_url: uploadResult.secure_url,
-            },
-        });
+                meal: updatedMeal,
+            });
+        }
 
         return Response.json({
             success: true,
             image_url: uploadResult.secure_url,
-            meal: updatedMeal,
         });
 
     } catch (error) {

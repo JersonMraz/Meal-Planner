@@ -72,8 +72,45 @@ export async function POST(req: Request) {
                     date,
                     meal_type,
                     meal_id: mId
+                },
+                include: {
+                    Meal: {
+                        include: {
+                            Ingredients: true
+                        }
+                    }
                 }
             });
+
+            const ingredientCount = mealPlan.Meal.Ingredients.length;
+
+            // Determine if the date is this week or next week
+            const plannedDate = new Date(date);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            // Calculate the end of the current week (Sunday)
+            const dayOfWeek = today.getDay(); // 0 is Sunday, 1 is Monday...
+            const daysUntilSunday = dayOfWeek === 0 ? 0 : 7 - dayOfWeek;
+            const endOfThisWeek = new Date(today);
+            endOfThisWeek.setDate(today.getDate() + daysUntilSunday);
+            endOfThisWeek.setHours(23, 59, 59, 999);
+
+            const weekLabel = plannedDate > endOfThisWeek ? "next week's plan" : "this week's plan";
+
+            // Create notification for the new meal plan
+            await prisma.notifications.create({
+                data: {
+                    user_id: uId,
+                    type: "grocery_list_updated",
+                    title: "Grocery list updated",
+                    description: `${ingredientCount} new ingredients were added from ${weekLabel}.`,
+                    icon: "ShoppingCart",
+                    icon_class: "bg-accent/15 text-accent",
+                    link: "/grocerylist"
+                }
+            });
+
             return Response.json({ mealPlan, action: "upserted" });
         } else {
             // Delete if meal_id is missing/null (removed)

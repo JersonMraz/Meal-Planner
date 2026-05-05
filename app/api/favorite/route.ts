@@ -12,6 +12,21 @@ export async function POST(req: Request) {
         if (!mId || isNaN(mId)) return Response.json({ error: "Invalid meal ID" }, { status: 400 });
         if (!uId || isNaN(uId)) return Response.json({ error: "Invalid user ID" }, { status: 400 });
 
+        // Simple Rate Limit: Check if the user has added a favorite in the last 2 seconds
+        const recentNotification = await prisma.notifications.findFirst({
+            where: {
+                user_id: uId,
+                type: "favorite_added",
+                created_at: {
+                    gte: new Date(Date.now() - 2000) // 2 seconds ago
+                }
+            }
+        });
+
+        if (recentNotification) {
+            return Response.json({ error: "Slow down! You're favoriting too fast." }, { status: 429 });
+        }
+
         const existing = await prisma.favorite.findFirst({
             where: {
                 meal_id: mId,
@@ -32,8 +47,25 @@ export async function POST(req: Request) {
             data: {
                 meal_id: mId,
                 user_id: uId
+            },
+            include: {
+                Meal: true
             }
         });
+
+        // Create a notification for the user
+        await prisma.notifications.create({
+            data: {
+                user_id: uId,
+                type: "favorite_added",
+                title: "Saved to favorites",
+                description: `“${favorite.Meal.name}” was added to your favorites.`,
+                icon: "Heart",
+                icon_class: "bg-secondary text-foreground",
+                link: "/favorites"
+            }
+        });
+
         return Response.json({ favorite, action: "added" });
     } catch (err) {
         console.error("PRISMA ERROR:", err);

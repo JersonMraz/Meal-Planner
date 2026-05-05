@@ -18,6 +18,11 @@ export async function GET() {
 
     const user = await prisma.user.findUnique({
         where: { id: uId },
+        include: {
+            dietaryPreferences: true,
+            notificationSettings: true,
+            languageAndRegion: true,
+        }
     });
 
     return Response.json({ user });

@@ -7,6 +7,8 @@ type User = {
     firstname: string;
     lastname: string;
     email: string;
+    bio: string;
+    profile_picture: string;
     role: string;
 };
 
