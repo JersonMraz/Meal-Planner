@@ -1,4 +1,4 @@
-import { loginUser } from "../../../lib/services/authService";
+import { loginUser } from "@/app/lib/services/authService";
 import { cookies } from "next/headers";
 
 export async function POST(req: Request) {
