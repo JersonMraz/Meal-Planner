@@ -2,7 +2,7 @@
 
 **PrepWise** is a modern, full-stack meal planning application designed to simplify your kitchen workflow. From discovering new recipes to organizing your weekly meals and auto-generating shopping lists, PrepWise is your ultimate kitchen companion.
 
-![PrepWise Hero](file:///C:/Users/Jerson/.gemini/antigravity/brain/1f097da0-0a0b-4251-b215-195df5f8c587/prepwise_hero_mockup_1778117084809.png)
+![PrepWise Hero](file:///C:/Users/Jerson/.gemini/antigravity/brain/1f097da0-0a0b-4251-b215-195df5f8c587/screencapture-diet-nomore-vercel-app-dashboard-2026-05-07-09_30_11.png)
 
 ## ✨ Features
 
