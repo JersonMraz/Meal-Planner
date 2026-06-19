@@ -102,7 +102,7 @@ const testimonials = [
     name: "Maya R.",
     role: "Busy parent",
     quote:
-      "PrepWise shaved hours off my Sundays. I plan the week in five minutes and the grocery list just appears.",
+      "MealFlow shaved hours off my Sundays. I plan the week in five minutes and the grocery list just appears.",
   },
   {
     name: "Daniel K.",
@@ -120,7 +120,7 @@ const testimonials = [
 
 const faqs = [
   {
-    q: "Is PrepWise free to use?",
+    q: "Is MealFlow free to use?",
     a: "Yes — the core experience (recipe finder, meal planner, grocery list, favorites) is completely free.",
   },
   {
@@ -129,7 +129,7 @@ const faqs = [
   },
   {
     q: "Does it work on mobile?",
-    a: "PrepWise is fully responsive with a dedicated bottom navigation on mobile and a collapsible sidebar on desktop.",
+    a: "MealFlow is fully responsive with a dedicated bottom navigation on mobile and a collapsible sidebar on desktop.",
   },
   {
     q: "Will my meal plan generate a shopping list?",
@@ -199,12 +199,12 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
           <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
             <Link href="#hero" className="flex items-center gap-2">
               <ChefHat className="h-7 w-7 text-primary" />
-              <span className="text-xl font-heading font-bold text-foreground">PrepWise</span>
+              <span className="text-xl font-heading font-bold text-foreground">MealFlow</span>
             </Link>
             <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
               <a href="#features" className="hover:text-foreground transition-colors">Features</a>
               <a href="#how" className="hover:text-foreground transition-colors">How it works</a>
-              <a href="#why" className="hover:text-foreground transition-colors">Why PrepWise</a>
+              <a href="#why" className="hover:text-foreground transition-colors">Why MealFlow</a>
               <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
             </nav>
             <div className="flex items-center gap-2">
@@ -252,7 +252,7 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
                 Waste less.
               </h1>
               <p className="max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
-                PrepWise helps you discover recipes you'll love, plan your week in minutes, and
+                MealFlow helps you discover recipes you'll love, plan your week in minutes, and
                 turn your plan into a ready-to-shop grocery list — all in one calm, beautiful app.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -332,7 +332,7 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
             </h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               From discovering new recipes to planning your entire week and shopping smart —
-              PrepWise brings the whole kitchen workflow into one place.
+              MealFlow brings the whole kitchen workflow into one place.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -390,10 +390,10 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
           </div>
         </section>
 
-        {/* Why PrepWise */}
+        {/* Why MealFlow */}
         <section id="why" className="mx-auto max-w-6xl px-4 py-20 md:py-28">
           <motion.div className="text-center mb-14 max-w-2xl mx-auto" {...fade()}>
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary">Why PrepWise</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-primary">Why MealFlow</span>
             <h2 className="mt-2 text-3xl md:text-4xl font-heading font-bold text-foreground">
               Designed for real kitchens
             </h2>
@@ -494,7 +494,7 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
               Ready to simplify mealtime?
             </h2>
             <p className="relative text-primary-foreground/85 max-w-md mx-auto">
-              Join thousands of home cooks who plan, shop, and eat better with PrepWise — for free.
+              Join thousands of home cooks who plan, shop, and eat better with MealFlow — for free.
             </p>
             <div className="relative">
               <Button size="lg" variant="secondary" asChild>
@@ -511,14 +511,14 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
           <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <ChefHat className="h-5 w-5 text-primary" />
-              <span className="font-heading font-semibold text-foreground">PrepWise</span>
+              <span className="font-heading font-semibold text-foreground">MealFlow</span>
             </div>
             <div className="flex items-center gap-6">
               <a href="#features" className="hover:text-foreground transition-colors">Features</a>
               <a href="#how" className="hover:text-foreground transition-colors">How it works</a>
               <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
             </div>
-            <p>© {new Date().getFullYear()} PrepWise. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} MealFlow. All rights reserved.</p>
           </div>
         </footer>
       </motion.main>
