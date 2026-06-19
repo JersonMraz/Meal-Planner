@@ -65,7 +65,7 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2">
             <ChefHat className="h-7 w-7 text-primary" />
-            <span className="text-xl font-heading font-bold text-foreground">PrepWise</span>
+            <span className="text-xl font-heading font-bold text-foreground">MealFlow</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#features" className="hover:text-foreground transition-colors">Features</a>
@@ -168,7 +168,7 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
             Everything you need to eat well
           </h2>
           <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
-            From discovering new recipes to planning your entire week — PrepWise has you covered.
+            From discovering new recipes to planning your entire week — MealFlow has you covered.
           </p>
         </motion.div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -222,7 +222,7 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
             Ready to simplify mealtime?
           </h2>
           <p className="text-primary-foreground/80 max-w-md mx-auto">
-            Join thousands of home cooks who plan, shop, and eat better with PrepWise.
+            Join thousands of home cooks who plan, shop, and eat better with MealFlow.
           </p>
           <Button size="lg" variant="secondary" asChild>
             <Link href={isLoggedIn ? "/dashboard" : "/signup"}>
@@ -237,9 +237,9 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
         <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-8 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <ChefHat className="h-5 w-5 text-primary" />
-            <span className="font-heading font-semibold text-foreground">PrepWise</span>
+            <span className="font-heading font-semibold text-foreground">MealFlow</span>
           </div>
-          <p>© {new Date().getFullYear()} PrepWise. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} MealFlow. All rights reserved.</p>
         </div>
       </footer>
     </div>
