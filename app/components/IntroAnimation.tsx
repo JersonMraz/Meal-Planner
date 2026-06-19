@@ -24,7 +24,6 @@ export const IntroAnimation = ({ onComplete, duration = 2600 }: IntroAnimationPr
         <AnimatePresence>
             {show && (
                 <motion.div
-                    key="intro"
                     className="fixed inset-0 z-[100] flex items-center justify-center bg-background overflow-hidden"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0, scale: 1.05 }}

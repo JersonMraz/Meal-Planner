@@ -49,9 +49,14 @@ export default function Signup() {
     }
 
     return (
-        <div className="min-h-screen flex">
-            {/* Left — branding panel */}
-            <div className="hidden lg:flex lg:w-1/2 bg-accent items-center justify-center relative overflow-hidden">
+        <div className="min-h-screen flex overflow-x-hidden">
+            {/* Branding panel — slides from left */}
+            <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="hidden lg:flex lg:w-1/2 bg-accent items-center justify-center relative overflow-hidden"
+            >
                 <div className="absolute inset-0 opacity-10">
                     {[...Array(6)].map((_, i) => (
                         <div
@@ -66,38 +71,33 @@ export default function Signup() {
                         />
                     ))}
                 </div>
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="relative z-10 text-center px-12"
-                >
+                <div className="relative z-10 text-center px-12">
                     <div className="flex h-16 w-16 mx-auto items-center justify-center rounded-2xl bg-accent-foreground/20 mb-6">
                         <ChefHat className="h-8 w-8 text-accent-foreground" />
                     </div>
                     <h1 className="font-heading text-4xl font-bold text-accent-foreground mb-4">
-                        Join MealFlow
+                        Join PrepWise
                     </h1>
                     <p className="text-accent-foreground/80 text-lg max-w-md mx-auto">
                         Start planning smarter meals today. It's free to get started!
                     </p>
-                </motion.div>
-            </div>
+                </div>
+            </motion.div>
 
-            {/* Right - Form */}
-            <div className="flex-1 flex items-center justify-center p-6 bg-background">
+            {/* Form — slides from right */}
+            <motion.div 
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="flex-1 flex items-center justify-center p-6 bg-background"
+            >
                 <Toaster position="top-center" duration={3000} richColors />
-                <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="w-full max-w-md space-y-8"
-                >
+                <div className="w-full max-w-md space-y-8">
                     <div className="lg:hidden flex items-center gap-2 mb-2">
                         <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
                             <ChefHat className="h-5 w-5 text-primary-foreground" />
                         </div>
-                        <span className="font-heading text-xl font-semibold text-foreground">MealFlow</span>
+                        <span className="font-heading text-xl font-semibold text-foreground">PrepWise</span>
                     </div>
 
                     <div>
@@ -116,7 +116,7 @@ export default function Signup() {
                                     onChange={(e) => setFirstname(e.target.value)}
                                     id="firstName"
                                     placeholder="John"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+                                    className="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
                             </div>
                             <div className="space-y-2">
                                 <p className="text-sm font-body font-medium text-foreground">Last name</p>
@@ -125,7 +125,7 @@ export default function Signup() {
                                     onChange={(e) => setLastname(e.target.value)}
                                     id="lastName"
                                     placeholder="Doe"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+                                    className="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
                             </div>
                         </div>
 
@@ -137,7 +137,7 @@ export default function Signup() {
                                 id="email"
                                 type="email"
                                 placeholder="you@example.com"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+                                className="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
                         </div>
 
                         <div className="space-y-2">
@@ -149,7 +149,7 @@ export default function Signup() {
                                     id="password"
                                     type={showPassword ? "text" : "password"}
                                     placeholder="••••••••"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                                    className="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                                 />
                                 <button
                                     type="button"
@@ -165,7 +165,7 @@ export default function Signup() {
                         <button
                             type="submit"
                             disabled={creatingAccount}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-primary text-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                            className="w-full px-3 py-2 border border-border rounded-lg bg-primary text-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                         >
                             {creatingAccount ? (
                                 <span className="flex items-center justify-center gap-2">
@@ -201,8 +201,8 @@ export default function Signup() {
                             Sign in
                         </Link>
                     </p>
-                </motion.div>
-            </div>
+                </div>
+            </motion.div>
         </div>
     );
 }
