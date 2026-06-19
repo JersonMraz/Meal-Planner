@@ -51,7 +51,7 @@ export default function Signup() {
     return (
         <div className="min-h-screen flex overflow-x-hidden">
             {/* Branding panel — slides from left */}
-            <motion.div 
+            <motion.div
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
@@ -76,7 +76,7 @@ export default function Signup() {
                         <ChefHat className="h-8 w-8 text-accent-foreground" />
                     </div>
                     <h1 className="font-heading text-4xl font-bold text-accent-foreground mb-4">
-                        Join PrepWise
+                        Join MealFlow
                     </h1>
                     <p className="text-accent-foreground/80 text-lg max-w-md mx-auto">
                         Start planning smarter meals today. It's free to get started!
@@ -85,7 +85,7 @@ export default function Signup() {
             </motion.div>
 
             {/* Form — slides from right */}
-            <motion.div 
+            <motion.div
                 initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
@@ -97,7 +97,7 @@ export default function Signup() {
                         <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
                             <ChefHat className="h-5 w-5 text-primary-foreground" />
                         </div>
-                        <span className="font-heading text-xl font-semibold text-foreground">PrepWise</span>
+                        <span className="font-heading text-xl font-semibold text-foreground">MealFlow</span>
                     </div>
 
                     <div>

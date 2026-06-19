@@ -23,12 +23,18 @@ export async function GET(req: Request) {
     endOfWeek.setDate(startOfWeek.getDate() + 6);
     endOfWeek.setHours(23, 59, 59, 999);
 
-    const [totalFavorites, totalMealPlans, weekData, historyData] = await Promise.all([
+    const [totalFavorites, totalMealPlans, totalMealPlanToday, weekData, historyData] = await Promise.all([
         prisma.favorite.count({
             where: { user_id: uId },
         }),
         prisma.mealPlan.count({
             where: { user_id: uId, }
+        }),
+        prisma.mealPlan.count({
+            where: {
+                user_id: uId,
+                date: now.toISOString().split('T')[0]
+            }
         }),
         prisma.mealPlan.findMany({
             where: {
@@ -75,6 +81,7 @@ export async function GET(req: Request) {
     return Response.json({
         totalFavorites,
         totalMealPlans,
+        totalMealPlanToday,
         thisWeek,
         averageCalories
     });

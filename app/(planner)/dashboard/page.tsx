@@ -10,10 +10,10 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/app/contexts/UserContext";
 
 const staticStats = [
-    { label: "Recipes Saved", value: "24", icon: BookOpen, color: "bg-primary/10 text-primary" },
-    { label: "Meals Planned", value: "12", icon: CalendarCheck, color: "bg-accent/10 text-accent" },
-    { label: "This Week", value: "5 days", icon: Utensils, color: "bg-primary/10 text-primary" },
-    { label: "Calories Avg", value: "1,840", icon: TrendingUp, color: "bg-accent/10 text-accent" },
+    { label: "Recipes Saved", value: "0", icon: BookOpen, color: "bg-primary/10 text-primary" },
+    { label: "Meals Planned", value: "0", icon: CalendarCheck, color: "bg-accent/10 text-accent" },
+    { label: "This Week", value: "0 days", icon: Utensils, color: "bg-primary/10 text-primary" },
+    { label: "Calories Avg", value: "0 cal", icon: TrendingUp, color: "bg-accent/10 text-accent" },
 ];
 
 const days = ["Mon", "Tue", "Wed"];
@@ -24,6 +24,7 @@ export default function Home() {
     const router = useRouter();
     const [meals, setMeals] = useState([]);
     const [stats, setStats] = useState<any[]>(staticStats);
+    const [mealPlanToday, setMealPlanToday] = useState(0);
 
     useEffect(() => {
         const fetchMeals = async () => {
@@ -72,6 +73,7 @@ export default function Home() {
                         newStats[3].value = data.averageCalories.toString() + " cal"; //Average calories
                         return newStats;
                     });
+                    setMealPlanToday(data.totalMealPlanToday.toString());
                 }
             } catch (error) {
                 console.log("Error fetching stats:", error);
@@ -109,7 +111,7 @@ export default function Home() {
                             Good morning, {user?.firstname} {user?.lastname} 👋
                         </h1>
                         <p className="mt-1 text-sm text-primary-foreground/80 max-w-md">
-                            You have 3 meals planned for today. Let's make something delicious!
+                            You have {mealPlanToday?.toString()} {mealPlanToday == 1 ? 'meal' : 'meals'} planned for today. Let's make something delicious!
                         </p>
                     </div>
                 </div>

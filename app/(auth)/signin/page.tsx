@@ -58,7 +58,7 @@ export default function Signin() {
                         <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
                             <ChefHat className="h-5 w-5 text-primary-foreground" />
                         </div>
-                        <span className="font-heading text-xl font-semibold text-foreground">PrepWise</span>
+                        <span className="font-heading text-xl font-semibold text-foreground">MealFlow</span>
                     </div>
 
                     <div>
@@ -177,7 +177,7 @@ export default function Signin() {
                         <ChefHat className="h-8 w-8 text-primary-foreground" />
                     </div>
                     <h1 className="font-heading text-4xl font-bold text-primary-foreground mb-4">
-                        Welcome back to PrepWise
+                        Welcome back to MealFlow
                     </h1>
                     <p className="text-primary-foreground/80 text-lg max-w-md mx-auto">
                         Plan meals, discover recipes, and simplify your grocery shopping — all in one place.
