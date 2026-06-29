@@ -1,8 +1,8 @@
-# PrepWise 🍳
+# MealFlow 🍳
 
-**PrepWise** is a modern, full-stack meal planning application designed to simplify your kitchen workflow. From discovering new recipes to organizing your weekly meals and auto-generating shopping lists, PrepWise is your ultimate kitchen companion.
+**MealFlow** is a modern, full-stack meal planning application designed to simplify your kitchen workflow. From discovering new recipes to organizing your weekly meals and auto-generating shopping lists, MealFlow is your ultimate kitchen companion.
 
-![PrepWise Hero](landingpage.png)
+![MealFlow Hero](landingpage.png)
 
 ## ✨ Features
 
