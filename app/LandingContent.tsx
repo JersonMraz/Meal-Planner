@@ -25,6 +25,12 @@ import {
   Utensils,
   Search,
   BellRing,
+  Info,
+  Settings,
+  X,
+  Sliders,
+  HelpCircle,
+  Code,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import heroImg from "../public/assets/hero-recipe.jpg";
@@ -32,6 +38,7 @@ import Image from "next/image";
 import { Toaster, toast } from "sonner";
 import { IntroAnimation } from "./components/IntroAnimation";
 import { useState, useEffect } from "react";
+import { Alert } from "./components/ui/alert";
 
 const features = [
   {
@@ -155,6 +162,10 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
   const [mounted, setMounted] = useState(false);
   const [introDone, setIntroDone] = useState(false);
 
+  // Showcase warning states
+  const [pillCollapsed, setPillCollapsed] = useState(false);
+  const [ribbonClosed, setRibbonClosed] = useState(false);
+
   useEffect(() => {
     setMounted(true);
     const played = sessionStorage.getItem("mealflow-intro-played") === "1";
@@ -194,6 +205,7 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
         animate={{ opacity: introDone ? 1 : 0 }}
         transition={{ duration: 0.6, delay: introDone ? 0 : 0.1 }}
       >
+
         {/* Nav */}
         <header className="sticky top-0 z-50 border-b border-border bg-card/70 backdrop-blur-xl">
           <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
@@ -231,8 +243,61 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
           </div>
         </header>
 
+        {/* Collapsible Floating Pill */}
+        <div className="fixed bottom-6 right-6 z-40 transition-all duration-300 max-w-sm">
+          {pillCollapsed ? (
+            <button
+              onClick={() => setPillCollapsed(false)}
+              className="flex items-center gap-2 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-600 dark:text-amber-400 px-3.5 py-1.5 rounded-full shadow-md backdrop-blur-md text-xs font-semibold cursor-pointer"
+            >
+              <span className="flex h-1.5 w-1.5 rounded-full bg-amber-500 animate-ping" />
+              <span>Showcase Mode Info</span>
+            </button>
+          ) : (
+            <div className="bg-card/95 backdrop-blur-xl border border-border rounded-2xl p-4 shadow-elevated relative max-w-[280px] sm:max-w-[320px]">
+              <button
+                onClick={() => setPillCollapsed(true)}
+                className="absolute top-2.5 right-2.5 text-muted-foreground hover:text-foreground p-0.5 rounded-full hover:bg-secondary transition-colors cursor-pointer"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+              <div className="flex items-start gap-2.5">
+                <span className="p-1.5 rounded-lg bg-amber-500/10 text-amber-500 mt-0.5 shrink-0">
+                  <Info className="h-4 w-4" />
+                </span>
+                <div>
+                  <h4 className="text-md font-semibold text-foreground">Showcase Mode Info</h4>
+                  <p className="text-[12px] text-muted-foreground mt-1 leading-relaxed">
+                    This application showcases interactive frontend and backend engineering. The recipe search, weekly planner, database integrations, and account features are fully active; only marketing statistics are simulated.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
         {/* Hero */}
         <section id="hero" className="relative overflow-hidden">
+          {/* Top Announcement Ribbon */}
+          {!ribbonClosed && (
+            <div className="fixed top-16 left-0 w-full z-40 bg-amber-500/10 border-b border-amber-500/25 text-amber-600 dark:text-amber-400 py-2.5 px-4 text-xs md:text-sm font-medium backdrop-blur-md transition-all duration-300">
+              <div className="max-w-[1550px] mx-auto flex items-center justify-between gap-4">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-2 w-2 rounded-full bg-amber-500 animate-ping shrink-0" />
+                  <span>
+                    <strong>Showcase Mode:</strong> Full-stack features, real recipe databases, and meal planner capabilities are fully active. Only landing page marketing metrics (e.g., cook counts, waste savings) are simulated for demonstration.
+                  </span>
+                </div>
+                <button
+                  onClick={() => setRibbonClosed(true)}
+                  className="text-amber-500 hover:text-amber-600 dark:hover:text-amber-300 p-0.5 rounded-full hover:bg-amber-500/10 transition-colors shrink-0 cursor-pointer"
+                  title="Dismiss warning"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          )}
           {/* Decorative gradient blobs */}
           <div className="pointer-events-none absolute -top-40 -left-32 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
           <div className="pointer-events-none absolute top-20 -right-32 h-96 w-96 rounded-full bg-accent/20 blur-3xl" />
@@ -521,7 +586,7 @@ export default function LandingContent({ isLoggedIn }: { isLoggedIn: boolean }) 
             <p>© {new Date().getFullYear()} MealFlow. All rights reserved.</p>
           </div>
         </footer>
-      </motion.main>
+      </motion.main >
     </>
   );
 }
