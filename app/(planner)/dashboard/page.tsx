@@ -23,6 +23,8 @@ export default function Home() {
     const [todayMeal, setTodayMeal] = useState([]);
     const router = useRouter();
     const [meals, setMeals] = useState([]);
+    const [mealsAPIReady, setMealsAPIReady] = useState(false);
+    const [statsAPIReady, setStatsAPIReady] = useState(false);
     const [stats, setStats] = useState<any[]>(staticStats);
     const [mealPlanToday, setMealPlanToday] = useState(0);
 
@@ -49,6 +51,7 @@ export default function Home() {
                     }));
                     setMeals(mealWithFavStatus);
                 }
+                setMealsAPIReady(true);
             } catch (error) {
                 console.log("Error fetching meals:", error);
             }
@@ -75,6 +78,7 @@ export default function Home() {
                     });
                     setMealPlanToday(data.totalMealPlanToday.toString());
                 }
+                setStatsAPIReady(true);
             } catch (error) {
                 console.log("Error fetching stats:", error);
             }
@@ -108,7 +112,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-linear-to-r from-foreground/70 to-foreground/20 flex items-center px-6 md:px-10">
                     <div>
                         <h1 className="text-2xl md:text-3xl font-heading font-bold text-primary-foreground">
-                            Good morning, {user?.firstname} {user?.lastname} 👋
+                            Good morning, {user?.firstname} {user?.lastname}
                         </h1>
                         <p className="mt-1 text-sm text-primary-foreground/80 max-w-md">
                             You have {mealPlanToday?.toString()} {mealPlanToday == 1 ? 'meal' : 'meals'} planned for today. Let's make something delicious!
@@ -119,7 +123,7 @@ export default function Home() {
 
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {stats.map((s: any) => (
+                {statsAPIReady ? stats.map((s: any) => (
                     <div key={s.label} className="rounded-xl bg-card shadow-soft p-4 flex items-center gap-3">
                         <div className={`rounded-lg p-2 ${s.color}`}>
                             <s.icon className="h-4 w-4" />
@@ -129,7 +133,15 @@ export default function Home() {
                             <p className="text-xs text-muted-foreground">{s.label}</p>
                         </div>
                     </div>
-                ))}
+                )) : (
+                    <>
+                        {Array.from({ length: 4 }).map((_, i) => (
+                            <div key={i} className="rounded-xl bg-card shadow-soft p-4 animate-pulse">
+                                <div className="h-11 w-11"></div>
+                            </div>
+                        ))}
+                    </>
+                )}
             </div>
 
             {/* Today's meal plan */}
@@ -177,9 +189,15 @@ export default function Home() {
             <section>
                 <h2 className="text-lg font-heading font-semibold text-foreground mb-3">Recommended Recipes</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {meals.map((meal: any) => (
-                        <RecipeCard key={meal.id} recipe={meal} />
-                    ))}
+                    {mealsAPIReady ? (
+                        meals.map((meal: any) => (
+                            <RecipeCard key={meal.id} recipe={meal} loaded={true} />
+                        ))
+                    ) : (
+                        Array.from({ length: 6 }).map((_, i) => (
+                            <RecipeCard key={i} recipe={{}} loaded={false} />
+                        ))
+                    )}
                 </div>
             </section>
         </div>

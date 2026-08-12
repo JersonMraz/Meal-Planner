@@ -15,6 +15,7 @@ function RecipeFinderContent() {
     const [diet, setDiet] = useState("All");
     const [cuisine, setCuisine] = useState("All");
     const [showFilters, setShowFilters] = useState(false);
+    const [mealsAPIReady, setMealsAPIReady] = useState(false);
     const [meals, setMeals] = useState<any[]>([]);
     const [allDiets, setAllDiets] = useState<string[]>(["All"]);
     const [allCuisines, setAllCuisines] = useState<string[]>(["All"]);
@@ -55,6 +56,7 @@ function RecipeFinderContent() {
                     }));
 
                     setMeals(mealsWithFavStatus);
+                    setMealsAPIReady(true);
                     if (!query) {
                         if (data.diets) setAllDiets(["All", ...data.diets]);
                         if (data.cuisines) setAllCuisines(["All", ...data.cuisines]);
@@ -76,6 +78,7 @@ function RecipeFinderContent() {
     }, [query, user?.id]);
 
     const filteredMeals = useMemo(() => {
+        setMealsAPIReady(true);
         return meals.filter((meal) => {
             const matchesDiet = diet === "All" || meal.diet_type === diet;
             const matchesCuisine = cuisine === "All" || meal.cuisine === cuisine;
@@ -149,13 +152,22 @@ function RecipeFinderContent() {
 
             {/* Results */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filteredMeals?.map((r: any) => (
-                    <RecipeCard key={r.id} recipe={r} />
-                ))}
+                {mealsAPIReady ? (
+                    filteredMeals?.length > 0 ? (
+                        filteredMeals.map((r: any) => (
+                            <RecipeCard key={r.id} recipe={r} loaded={true} />
+                        ))
+                    ) : (
+                        Array.from({ length: 9 }).map((_, i) => (
+                            <RecipeCard key={i} recipe={{}} loaded={false} />
+                        ))
+                    )
+                ) : (
+                    Array.from({ length: 9 }).map((_, i) => (
+                        <RecipeCard key={i} recipe={{}} loaded={false} />
+                    ))
+                )}
             </div>
-            {filteredMeals?.length === 0 && (
-                <p className="text-center text-muted-foreground py-12">No recipes found. Try a different search!</p>
-            )}
         </div>
     );
 }
